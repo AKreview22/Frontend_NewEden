@@ -1,12 +1,17 @@
 
 import { IResults } from './../Pages/IResults.interface';
 import { IProperty } from './../Pages/IProperty.interface';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient ,HttpHeaders} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { Property } from '../Pages/property';
 
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type': 'application/json',
+  }),
+};
 /*testing , Hello ya gama3a *
 
 /**export interface dataSetItems{
@@ -35,6 +40,7 @@ export class ApiService {
   constructor(private http: HttpClient) { }
   readonly APIUrl = "http://127.0.0.1:8000";
   readonly PhotoUrl = "http://127.0.0.1:8000/media/";
+  private baseUrl = 'http://127.0.0.1:8000/EdenApp/pieChart/';
 
   postEmp(data: any) {
     return this.http.post("http://127.0.0.1:8000/Home/register/", data);
@@ -161,6 +167,15 @@ export class ApiService {
 
   postPredictionResults(data: any) {
     return this.http.post<any>("http://localhost:3000/predictionDetails", data);
+  }
+  cryptoData() {
+    const url = `${this.baseUrl}`;
+    return this.http
+      .get(url, httpOptions)
+      .toPromise()
+      .then((data) => {
+        return data;
+      });
   }
 
   /*results(){
