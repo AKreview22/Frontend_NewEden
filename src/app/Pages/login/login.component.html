@@ -1,0 +1,24 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="text-center">
+                    <h1>Login</h1><hr>
+                    <h4>Please enter your data</h4><hr>
+
+                </div>
+                <form [formGroup]="loginForm" >
+                    <div class="mb-3">
+                      <label for="exampleInputEmail1" class="form-label" style="font-family: Garamond; color: white;">Username</label>
+                      <input formControlName="username" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    </div>
+                    <div class="mb-3">
+                      <label for="exampleInputPassword1" class="form-label" style="font-family: Garamond; color: white;">Role</label>
+                      <input formControlName="role" type="email" class="form-control" id="exampleInputPassword1">
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="font-family: Garamond;" (click)="login()">Login</button>
+                  </form>
+            </div>
+        </div>
+    </div>
+</div>

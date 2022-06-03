@@ -1,0 +1,44 @@
+<form [formGroup]="consForm">
+    <mat-card>
+        <mat-card-header style="font-weight: bold; font-size: large; padding: 5px;">
+            Installment Constraints:
+        </mat-card-header>
+        <mat-card-content>
+            <div>
+                    <label>Maximum Years</label>
+                    <mat-form-field appearance="outline">
+                    <input formControlName="maxYears" matInput type="number" placeholder="Maximum years">
+                </mat-form-field>
+            
+                    <label>Interest</label>
+                <mat-form-field appearance="outline">
+                    <input formControlName="interest" matInput type="number" placeholder="Interest %&nbsp;">
+                </mat-form-field>
+           
+                        <label>Minimum Deposit</label>
+                    <mat-form-field appearance="outline">
+                        <input formControlName="minDeposit" matInput type="number" placeholder="Minimum Deposit %&nbsp;">
+                    </mat-form-field>
+                
+                    <label>Additional Expenses</label>
+                    <mat-form-field appearance="outline">
+                        <input formControlName="addExpenses" matInput type="number" placeholder="Additional Expenses $&nbsp;">
+                    </mat-form-field>
+                   
+                        <label>Amount Paid Before Delivery</label>
+                    <mat-form-field appearance="outline">
+                        <input formControlName="paidBeforeDelivery" matInput type="number" placeholder="Amount Paid Before Delivery %&nbsp;">
+                    </mat-form-field>
+                    
+                </div>
+        </mat-card-content>
+        <mat-card-actions>
+            <button style="margin-left: 10px; font-weight: bold;" color="primary" mat-raised-button (click)="save()">
+                Save
+            </button>
+            <button style="margin-right: 10px; font-weight: bold;" color="primary" mat-raised-button (click)="viewConst()">
+                View Constraints
+            </button>
+        </mat-card-actions>
+    </mat-card>
+</form>

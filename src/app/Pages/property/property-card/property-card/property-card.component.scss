@@ -1,0 +1,110 @@
+/*.container
+{
+    margin-left: 20px;
+}
+
+.img-container
+{
+    width: 100%;
+    height: 100%;
+}
+.img-container img
+{
+    width: 100%;
+    height: 100%;
+}
+
+.img-prev
+{
+    margin-top: 10px;
+}
+.img-slide
+{
+    display: inline-block;
+    width: 24%;
+    margin: 0 2px;
+    cursor: pointer;
+    opacity: 0.6;
+}
+.active
+{
+    border: 2px solid #222;
+    opacity: 1;
+}*/
+
+/*.card
+{
+  margin-left: 20px;
+  margin: auto;
+  width: 100%;
+
+}
+.card img
+{
+  padding: 10px;
+  height: 250px;
+}
+
+.ngx-gallery
+{
+  display: inline-block;
+  margin-bottom: 10px;
+}*/
+
+.card
+{
+  min-height: 400px;
+  min-width: 300px;
+}
+.card-body h1
+{
+  font-family: fantasy;
+  color: #0069d9;
+}
+.font-highlight
+{
+  font-style: italic;
+  color: orangered;
+}
+.card-img-wrapper
+{
+  overflow: hidden;
+  position: relative;
+}
+.card:hover img
+{
+  transform: scale(1.2,1.2);
+  transition-duration: 500ms;
+  transition-timing-function: ease-out;
+  opacity: 0.5;
+}
+
+.card img
+{
+  transform: scale(1,1);
+  transition-duration: 500ms;
+  transition-timing-function: ease-out;
+  height: 250px;
+}
+
+.member-icons
+{
+  position: absolute;
+  bottom: -10%;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  opacity: 0;
+}
+
+.card-img-wrapper:hover .member-icons
+{
+  bottom: 0;
+  opacity: 1;
+}
+
+.animate
+{
+  transition: all 0.3s ease-in-out;
+}

@@ -1,0 +1,31 @@
+<h1 mat-dialog-title>Add Property Form</h1>
+<div mat-dialog-content>
+    <form [formGroup]="propForm">
+        <mat-form-field appearance="outline">
+            <mat-label>Number</mat-label>
+            <input formControlName="propNum" matInput type="number" placeholder="Placeholder">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Bathrooms</mat-label>
+            <input formControlName="bathrooms" matInput type="number" placeholder="Placeholder">
+        </mat-form-field>
+        <h3>Garden</h3>
+        <mat-checkbox formControlName="garden"></mat-checkbox><br><br>
+        <mat-form-field appearance="outline">
+            <mat-label>Level</mat-label>
+            <input formControlName="level" matInput type="number" placeholder="Placeholder">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Area</mat-label>
+            <input formControlName="area" matInput type="number" placeholder="Placeholder">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Price</mat-label>
+            <input formControlName="price" matInput type="number" placeholder="Placeholder">
+        </mat-form-field>
+    </form>
+</div>
+<div mat-dialog-action [align]="'end'">
+    <button mat-raised-button color="warn" mat-dialog-close >Close</button>
+    <button style="margin-left: 8px;" mat-raised-button color="primary" (click)="addProp()">{{actionBtn}}</button>
+</div>

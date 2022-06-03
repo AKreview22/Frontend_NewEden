@@ -1,0 +1,40 @@
+<section class="jumborton main-home-section">
+    <div class="bg-image">
+        <div class="content">
+            <h1>BEAUTIFUL HOMES <br/> MADE FOR YOU</h1>
+            <button type="button" class="btn btn-outline-dark"><a routerLink="price-prediction"  routerLinkActive="active-link"> Find Your Ideal Property</a></button>
+        </div>
+    </div>
+</section>
+
+
+<div class="filtration">
+  <div class="row" style="background-color: gray;">
+    <div class="col">
+      <mat-form-field appearance="outline">
+        <mat-label>Seach Propert</mat-label>
+        <input [(ngModel)]="type" matInput placeholder="Search">
+      </mat-form-field>
+      <button mat-raised-button color="primary" (click)="onTypeFilter()"><i class="fa-solid fa-magnifying-glass"></i></button>
+      <button mat-raised-button color="primary" (click)="onTypeFilterClear()"><i class="fa-solid fa-xmark"></i></button> &nbsp;
+
+      <mat-form-field appearance="fill">
+        <mat-label>Sort By</mat-label>
+        <mat-select [(ngModel)]= 'SortbyParam'>
+          <mat-option value="area">Area</mat-option>
+          <mat-option value="location">Location</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="shadow col-sm-4 mb-4 p-5" style="margin-top: 70px" *ngFor="let property of properties |filter:searchType:'type'| paginate: {itemsPerPage: 9, currentPage : page , totalItems: totalLength} | sort:[SortbyParam,'desc']">
+    <app-property-card [property]="property"></app-property-card>
+  </div>
+
+  <pagination-controls class="text-center my-pagination" (pageChange)="page = $event"></pagination-controls>
+
+
+</div>

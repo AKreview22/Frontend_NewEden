@@ -1,0 +1,23 @@
+$main-color: rgb(0, 255, 213);
+$active-bg-color: darken($main-color, 10%);       
+
+.navbar {
+    border-bottom: 2px solid darken($active-bg-color, 20%);
+    font-weight: bold;
+}
+
+.nav-link {
+    &:hover {
+        background-color: $active-bg-color;
+        text-decoration: underline;
+    }
+}
+
+.navbar-dark .navbar-nav .active > .nav-link {
+    background-color: $active-bg-color;
+}
+
+.nav-item {
+    border-left: 1px solid rgba(3, 82, 105, 0.1);
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+}

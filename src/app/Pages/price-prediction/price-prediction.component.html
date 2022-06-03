@@ -1,0 +1,137 @@
+<!--<div class="container" >
+  <mat-toolbar>
+    <span class="fill-remaining-space"></span>
+    <span>Enter The Property Details:</span>
+    <span class="fill-remaining-space"></span>
+  </mat-toolbar>
+  <form [formGroup]="pricePredictionService.form" class="normal-form" (ngSubmit)="prediction(pricePredictionService.form.value)">
+    <mat-grid-list cols="2" rowHeight="300px" >
+      <mat-grid-tile>
+        <div class="controles-container">
+          <input type="hidden" formControlName="$key">
+          <mat-form-field>
+            <input formControlName="area"  matInput placeholder="Area">
+            <mat-error>This field is mandatory</mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <input formControlName="type"  matInput placeholder="Type">
+            <mat-error>This field is mandatory</mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <input formControlName="bathrooms"  matInput placeholder="Bathrooms">
+            <mat-error>This field is mandatory</mat-error>
+          </mat-form-field>
+        </div>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <div class="controles-container">
+          <mat-form-field>
+            <input formControlName="bedrooms"  matInput placeholder="Bedrooms">
+            <mat-error>This field is mandatory</mat-error>
+          </mat-form-field>
+          <mat-select formControlName="location" placeholder="Location">
+            <mat-option>None</mat-option>
+            <ng-container *ngFor="let location of locations">
+              <mat-option value="{{location.id}}">{{location.value}}</mat-option>
+            </ng-container>
+          </mat-select>
+          <div class="button-row">
+            <button mat-raised-button color="primary" type="submit" [disabled]="pricePredictionService.form.invalid">Predict</button>
+          </div>
+        </div>
+      </mat-grid-tile>
+    </mat-grid-list>
+
+  </form>
+</div>-->
+
+<!--<div class="container">
+  <h1 mat-dialog-title class="text-center">Predict your ideal Property</h1>
+  <div mat-dialog-content>
+    <form [formGroup]="predictionForm">
+      <div class="row">
+        <div class="col-sm-6">
+          <mat-form-field appearance="outline">
+            <mat-label>Area</mat-label>
+            <input formControlName="area" matInput type="number" placeholder="Area">
+          </mat-form-field>
+        </div>
+        <div class="col-sm-6">
+          <mat-form-field appearance="outline">
+            <mat-label>Type</mat-label>
+            <input formControlName="type" matInput placeholder="Type">
+          </mat-form-field>
+        </div>
+        <div class="col-sm-6">
+          <mat-form-field appearance="outline">
+            <mat-label>Bedrooms</mat-label>
+            <input formControlName="bedroom" matInput type="number" placeholder="Bedrooms">
+          </mat-form-field>
+        </div>
+        <div class="col-sm-6">
+          <mat-form-field appearance="outline">
+            <mat-label>Bathrooms</mat-label>
+            <input formControlName="bathroom" matInput type="number" placeholder="Bathrooms">
+          </mat-form-field>
+        </div>
+        <div class="col-sm-6">
+          <mat-select formControlName="location" placeholder="Location">
+            <mat-option>None</mat-option>
+            <ng-container *ngFor="let location of locations">
+              <mat-option value="{{location.id}}">{{location.value}}</mat-option>
+            </ng-container>
+          </mat-select>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div mat-dialog-action [align]="'center'" class="col-sm-10">
+    <button mat-raised-button color="primary" (click)="openDialog()" [disabled]="predictionForm.invalid">Predict</button>
+  </div>
+</div>-->
+
+<div class="container">
+  <mat-toolbar>
+    <span class="fill-remaining-space"></span>
+    <span>Predict your ideal Property</span>
+    <span class="fill-remaining-space"></span>
+  </mat-toolbar>
+  <form [formGroup]="pricePredictionService.form"  class="normal-form">
+    <mat-grid-list cols="2" rowHeight="300px">
+      <mat-grid-tile>
+        <div class="controles-container">
+          <input type="hidden" formControlName="$key">
+          <mat-form-field appearance="outline">
+            <mat-label>Area</mat-label>
+            <input formControlName="area" matInput type="number" placeholder="Area">
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Type</mat-label>
+            <input formControlName="type" matInput placeholder="Type">
+          </mat-form-field>
+          <mat-select formControlName="location" placeholder="Location">
+            <mat-option>None</mat-option>
+            <ng-container *ngFor="let location of locations">
+              <mat-option value="{{location.id}}">{{location.value}}</mat-option>
+            </ng-container>
+          </mat-select>
+        </div>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <div class="controles-container">
+          <mat-form-field appearance="outline">
+            <mat-label>Bedrooms</mat-label>
+            <input formControlName="bedrooms" matInput type="number" placeholder="Bedrooms">
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Bathrooms</mat-label>
+            <input formControlName="bathrooms" matInput type="number" placeholder="Bathrooms">
+          </mat-form-field>
+          <div class="button-row">
+            <button mat-raised-button color="primary" (click)="openDialog()" [disabled]="pricePredictionService.form.invalid">Predict</button>
+          </div>
+        </div>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </form>
+</div>

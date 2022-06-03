@@ -1,0 +1,21 @@
+.full-width-table {
+  width: 100%;
+}
+
+.small-table {
+  overflow-x: scroll !important;
+}
+
+th,
+td {
+  padding: 15px;
+  text-align: left;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+th {
+  background-color: #286274;
+  color: white;
+}

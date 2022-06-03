@@ -1,0 +1,42 @@
+<div class="grid-container">
+  <h1 class="mat-h1">Admin Dashboard</h1>
+  <mat-grid-list cols="{{ ( cardLayout | async )?.columns }}" rowHeight="200px">
+    <!--Mini Cards-->
+    <mat-grid-tile *ngFor="let mc of miniCardData" [colspan]="( cardLayout | async )?.miniCard?.cols"
+      [rowspan]="( cardLayout | async )?.miniCard?.rows">
+      <app-mini-card [title]="mc.title" [value]="mc.value" [color]="mc.color" [isIncrease]="mc.isIncrease" [duration]="mc.duration"
+       [percentValue]="mc.percentValue" [isCurrency]="mc. isCurrency" [icon]="mc.icon"></app-mini-card>
+    </mat-grid-tile>
+    <!--Charts-->
+    <mat-grid-tile  [colspan]="( cardLayout | async )?.chart?.cols"
+      [rowspan]="( cardLayout | async )?.chart?.rows">
+      <app-card title="Apartment and Prices">
+        <app-pie-chart></app-pie-chart>
+      </app-card>
+    </mat-grid-tile>
+      <mat-grid-tile  [colspan]="( cardLayout | async )?.chart?.cols"
+      [rowspan]="( cardLayout | async )?.chart?.rows">
+      <app-card title="Apartment and Prices">
+        <app-bar-chart></app-bar-chart>
+      </app-card>
+    </mat-grid-tile>
+    <mat-grid-tile  [colspan]="( cardLayout | async )?.chart?.cols"
+      [rowspan]="( cardLayout | async )?.chart?.rows">
+      <app-card title="Apartment ">
+        <app-line-chart></app-line-chart>
+      </app-card>
+    </mat-grid-tile>
+    <mat-grid-tile  [colspan]="( cardLayout | async )?.chart?.cols"
+      [rowspan]="( cardLayout | async )?.chart?.rows">
+      <app-card title="Apartment and Prices">
+        <app-dounght-chart></app-dounght-chart>
+      </app-card>
+    </mat-grid-tile>
+    <!--Table-->
+    <mat-grid-tile [colspan]="( cardLayout | async )?.table?.cols" [rowspan]="( cardLayout | async )?.table?.rows">
+      <app-card title="Sample of data">
+        <app-table></app-table>
+      </app-card>
+    </mat-grid-tile> 
+  </mat-grid-list>
+ </div>

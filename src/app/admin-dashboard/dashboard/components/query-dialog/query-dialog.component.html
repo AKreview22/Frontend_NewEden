@@ -1,0 +1,67 @@
+<h1 mat-dialog-title>Add Query </h1>
+<div mat-dialog-content>
+   <form [formGroup]="queryForm">
+    <mat-form-field appearance="outline">
+        <mat-label>Level of apartment</mat-label>
+        <input formControlName="Level" type="number" matInput placeholder="Placeholder">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Type of Apartment</mat-label>
+        <mat-select formControlName="Type" placeholder="">
+            <mat-option value="Villa">Villa</mat-option>
+            <mat-option value="Apartment">Apartment</mat-option>
+            <mat-option value="Duplex">Duplex</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Seller ID</mat-label>
+        <input formControlName="sellerID" type="number" matInput placeholder="Placeholder">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Minimum Price</mat-label>
+        <input formControlName="minPrice" type="number" matInput placeholder="Placeholder">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Maximum Price</mat-label>
+        <input formControlName="maxPrice"  type="number" matInput placeholder="Placeholder">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+      <mat-label>Minimum Area</mat-label>
+      <input formControlName="minArea" type="number" matInput placeholder="Placeholder">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Maximum Area</mat-label>
+      <input formControlName="maxArea" type="number" matInput placeholder="Placeholder">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>Start date</mat-label>
+        <input formControlName="startDate" matInput [matDatepicker]="picker1">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>End date</mat-label>
+        <input formControlName="EndDate" matInput [matDatepicker]="picker2">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-datepicker #picker2></mat-datepicker>
+      </mat-form-field>
+      
+        <mat-checkbox formControlName="Garden">Garden</mat-checkbox><br>
+        <mat-checkbox formControlName="Sold">Sold</mat-checkbox><br>
+        <mat-checkbox formControlName="Finished">Finished</mat-checkbox><br>
+       <br> <mat-form-field appearance="outline">
+            <mat-label>Number of Bathrooms</mat-label>
+            <input formControlName="Bathrooms" type="number" matInput placeholder="Placeholder">
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Number of Bedrooms</mat-label>
+            <input formControlName="Bedrooms" type="number" matInput placeholder="Placeholder">
+          </mat-form-field>
+   </form>
+</div>
+<div mat-dialog-action [align]="'end'">
+  <!--  <button mat-raised-button color="warn" mat-dialog-close >Close</button> -->
+    <button style="margin-left: 8px;"mat-raised-button color="primary" (click)="submit()">Submit</button>
+</div>

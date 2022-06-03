@@ -1,0 +1,86 @@
+.card
+{
+  margin-left: 10%;
+  min-height: 600px;
+}
+.card img
+{
+  padding: 10px;
+  height:300px;
+}
+.card-title
+{
+  color: #0069d9;
+}
+.card-img-wrapper{
+  height: 300px;
+}
+.row
+{
+  margin-left: 5px;
+}
+.ngx-gallery
+{
+  display:contents;
+  margin-bottom: 20px;
+}
+
+.tab-panel
+{
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 4px;
+  min-height: 600px;
+  background-color: white;
+}
+
+.nav-tabs > li.open .member-set > .nav-tabs > li:hover
+{
+  border-bottom: 4px solid #e1e2eb;
+}
+
+.member-set > .nav-tabs > li.open a, .member-tabset > .nav-tabs > li:hover
+{
+  border: 0;
+  background: none !important;
+  color: #333333;
+}
+
+.member-tabset > .nav-tabs > li.open > a > i, .member-tabset > .nav-tabs > li:hover > a > i
+{
+  color: #a6a6a6;
+}
+
+.member-tabset > .tab-content
+{
+  margin-top: -3px;
+  background-color: #fff;
+  border: 0;
+  border-top: 1px solid #eee;
+  padding: 15px 0;
+}
+
+.member-tabset > .nav-tabs > li.active
+{
+  border-bottom: 4px solid #0069d9;
+  position: relative;
+}
+
+.mat-form-field
+{
+  width: 90%;
+  align-items: center;
+
+}
+
+.radio-group
+{
+  display: flex;
+  flex-direction: column;
+  margin: 5px 0;
+}
+
+.radio-button
+{
+  margin: 2px;
+}

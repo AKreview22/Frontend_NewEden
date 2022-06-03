@@ -1,0 +1,102 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a routerLink=""  routerLinkActive="active-link"  [routerLinkActiveOptions]="{exact:true}"><i class="fas fa-home"></i> Home</a></li>
+  </ol>
+</nav>
+<div class="row shadow-lg">
+  <div class="col-sm-6 p-3">
+    <div class="card">
+      <div class="card-img-wrapper">
+        <ngx-gallery [options]="galleryOptions" [images]="galleryImages" class="ngx-gallery"></ngx-gallery>
+      </div>
+      <div class="card-body">
+        <h1 class="card-title">{{property.name}}</h1>
+        <div>
+          <strong>in {{property.location}}</strong>
+        </div> <hr>
+          <div>
+            <i class="fas fa-home"></i> {{property.type}}
+          </div>
+          <div>
+            <strong>Price: </strong>{{property.price}}
+          </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-4 p-0">
+    <div class="tab-panel p-3">
+      <mat-tab-group animationDuration="1000ms">
+        <mat-tab label="Overview">
+            <div class="row">
+              <div class="col-sm-10">
+                <div class="heading">
+                  <h1><strong>Detials:</strong></h1>
+                  <h3><p>{{property.details}}</p></h3>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="heading">
+                  <strong>Project Name:</strong>
+                  <p>{{property.project_name}}</p>
+                </div>
+                <div class="heading">
+                  <strong>Status</strong>
+                <p>{{property.status}}</p>
+                </div>
+                <div class="heading">
+                  <strong>Level Number:</strong>
+                  <p>{{property.level}}</p>
+                </div>
+              </div>
+
+                <div class="col-sm-6">
+                  <div class="heading">
+                      <strong>Area: </strong>
+                      <p>{{property.area}}<sup>2</sup></p>
+                  </div>
+                  <div class="heading">
+                    <strong>BHK:</strong>
+                    <p>
+                    <i class="fas fa-bed"></i> {{property.bedroom}}
+                    <i class="fas fa-bath"></i> {{property.bathroom}}
+                  </p>
+                  </div>
+                </div>
+            </div>
+        </mat-tab>
+        <mat-tab label="Sell Details">
+            <div mat-dialog-content>
+              <form [formGroup]="propertyForm">
+                <mat-form-field appearance="outline">
+                  <mat-label>Deposit</mat-label>
+                  <input formControlName="deposit" matInput type="number" placeholder="Deposit">
+                </mat-form-field><br>
+                <label><h3>Years: </h3></label><br>
+                 <mat-radio-group formControlName="years" class="radio-group">
+                   <mat-radio-button class="radio-button" *ngFor="let years of yearsList" [value]="years">{{years}}</mat-radio-button>
+                 </mat-radio-group>
+                 <mat-form-field appearance="outline">
+                    <mat-label>Overall Price</mat-label>
+                    <input formControlName="overallPrice" matInput type="number" placeholder="Overall Price">
+                  </mat-form-field>
+                  <mat-form-field appearance="outline">
+                    <mat-label>Monthly Payment</mat-label>
+                    <input formControlName="monthly" matInput type="number" placeholder="Monthly Payments">
+                  </mat-form-field>
+                  <mat-form-field appearance="outline">
+                    <mat-label>Deliver Date:</mat-label>
+                    <input formControlName="deliverDate" matInput [matDatepicker]="picker">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                  </mat-form-field>
+                  <mat-checkbox formControlName="equalInstall">Equal Installments</mat-checkbox>
+              </form>
+            </div>
+            <div mat-dialog-action [align]="'center'">
+              <button mat-raised-button color="primary" (click)="onSale()" [disabled]="propertyForm.invalid">Sale</button>
+            </div>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
+</div>
