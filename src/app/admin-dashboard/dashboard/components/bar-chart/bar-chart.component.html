@@ -1,5 +1,22 @@
 <div class="container">
     <div style="width:100%;">
-        <canvas id="myChart" width="700" height="250" #mychart></canvas>
+        <canvas id="myChart" width="700" height="400"></canvas>
+          <div>
+     <form [formGroup]="userForm" >
+
+        <input type="radio" style = "position:relative; left:180px; top:20px;" formControlName="type" (click)="apart()" [(ngModel)]="type" value="Apartment">
+        <strong><label for="Apartment" style = "position:relative; left:180px; top:20px; color:blueviolet; "  >Apartment</label><br></strong>
+
+        <input type="radio" style = "position:relative; left:80px; top: -7px;  border-radius: 15px;" id="Villa" formControlName="type"  (click)="villa()" [(ngModel)]="type" value="Villa">
+        <strong><label for="Villa" style = "position:relative; left:80px; top: -7px;  color:chartreuse; ">Villa</label><br></strong>
+
+        <input type="radio"style = "position:relative;  top: -35px;"  formControlName="type" ngModelChange="barChartData();" (click)="town()" [(ngModel)]="type" value="Townhouse">
+       <strong> <label for="Townhouse" style = "position:relative;  top: -35px; color: aqua;">Townhouse</label></strong>
+
+        <input type="radio" style = "position:relative; left:-220px; top: -35px;"  formControlName="type" ngModelChange="barChartData();"  (click)="twin()"[(ngModel)]="type" value="Twin House">
+        <strong><label for="Twin House" style = "position:relative; left:-220px; top: -35px; color:rgb(255, 0, 119);">Twin House</label></strong>
+
+    </form>
      </div>
+    </div>
     </div>

@@ -1,90 +1,146 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { Chart } from 'chart.js';
-import { ApiService } from 'src/app/Services/api.service';
 
+import { Component, NgModule, OnInit} from '@angular/core';
+import {Chart} from 'chart.js'
+import { ApiService } from 'src/app/Services/api.service';
+import{FormGroup,FormControl } from '@angular/forms';
 @Component({
   selector: 'app-bar-chart',
   templateUrl: './bar-chart.component.html',
-  styleUrls: ['./bar-chart.component.scss']
+  styleUrls: ['./bar-chart.component.scss'],
+
 })
+
+
 export class BarChartComponent implements OnInit {
+  type="Apartment"
+  result: any;
+  Bedrooms:any;
+  avg:any;
+  chart: any = [];
+ apart(){
+    this.service.barChartDataApart().then((res) => {
+    this.result=res
+    this.avg = this.result.data.map((data: any) => data.avg);
+    this.Bedrooms = this.result.data.map((data: any) => data.Bedrooms);
+  this.chart = new Chart('myChart', {
+        type: 'bar',
+        data: {
+          labels:this.Bedrooms,
+          datasets: [
+            {
+              data:this.avg,
+              borderColor: '#FCBA02',
+              label: 'Average price',
+              backgroundColor: [
+                'rgb(204, 153, 255)',
+                'rgb(178, 102, 255)',
+                'rgb(153, 51, 255)',
+                'rgba(127, 0, 255)',
+                'rgba(102, 0, 204)',
+                'rgba( 51, 0, 102)'
+              ],
+            }]}})
+          })
+          this.chart.destroy();
+ }
+ villa(){
+  this.service.barChartDataVilla().then((res) => {
+    this.result=res
+    this.avg = this.result.data.map((data: any) => data.avg);
+    this.Bedrooms = this.result.data.map((data: any) => data.Bedrooms);
+  this.chart = new Chart('myChart', {
+        type: 'bar',
+        data: {
+          labels:this.Bedrooms,
+          datasets: [
+            {
+              data:this.avg,
+              borderColor: '#FCBA02',
+              label: 'Average price',
+              backgroundColor: [
+                'rgb(153, 255, 153)',
+                'rgb(51, 255, 51)',
+                'rgb(0, 255, 0)',
+                'rgba(0, 153, 0, 0.8)',
+                'rgba(0, 102, 0, 0.8)',
+                'rgba(25, 51, 0, 0.97)'
+              ],
+            }]}})
 
-  constructor(private service: ApiService) { }
+          })
+          this.chart.destroy();
+ }
 
+ town(){
+  this.service.barChartDataTown().then((res) => {
+    this.result=res
+    this.avg = this.result.data.map((data: any) => data.avg);
+    this.Bedrooms = this.result.data.map((data: any) => data.Bedrooms);
+  this.chart = new Chart('myChart', {
+        type: 'bar',
+        data: {
+          labels:this.Bedrooms,
+          datasets: [
+            {
+              data:this.avg,
+              borderColor: '#FCBA02',
+              label: 'Average price',
+              backgroundColor: [
+                'rgb(102, 255, 255)',
+                'rgba(0, 153, 153)',
+                'rgba(0, 102, 102)',
+                'rgba(0, 51, 51)'
+              ],
+            }]}})
+
+          })
+          this.chart.destroy();
+ }
+
+
+ twin(){
+  this.service.barChartDataTwin().then((res) => {
+    this.result=res
+    this.avg = this.result.data.map((data: any) => data.avg);
+    this.Bedrooms = this.result.data.map((data: any) => data.Bedrooms);
+  this.chart = new Chart('myChart', {
+        type: 'bar',
+        data: {
+          labels:this.Bedrooms,
+          datasets: [
+            {
+              data:this.avg,
+              borderColor: '#FCBA02',
+              label: 'Average price',
+              backgroundColor: [
+                'rgb(255, 153, 204)',
+                'rgb(245, 88, 166)',
+                'rgb(246, 29, 137)',
+                'rgba(204, 0, 102)',
+                'rgba(153, 0, 76)',
+                'rgba(102, 0, 51)'
+              ],
+            }]}})
+
+          })
+          this.chart.destroy();
+ }
+
+  userForm = new FormGroup({
+    type: new FormControl(),
+  });
+
+  constructor(private service:ApiService) {
+  }
   ngOnInit(): void {
   }
 
-  canvas: any;
-  ctx: any;
-  @ViewChild('mychart') mychart: any;
-
   ngAfterViewInit() {
-    this.canvas = this.mychart.nativeElement;
-    this.ctx = this.canvas.getContext('2d');
-
-    new Chart(this.ctx, {
-      type: 'bar',
-      data: {
-        labels: [3+" Bedrooms",3+" Bedrooms",3+" Bedrooms",3+" Bedrooms",1+" Bedroom",1+" Bedroom",2+" Bedrooms",2+" Bedrooms",3+" Bedrooms",3+" Bedrooms",1+" Bedroom",2+" Bedrooms",3+" Bedrooms",2+" Bedrooms",2+" Bedrooms",2+" Bedrooms",3+" Bedrooms",2+" Bedrooms",2+" Bedrooms",2+" Bedrooms",2+" Bedrooms",2+" Bedrooms",2+" Bedrooms",1+" Bedroom",2+" Bedrooms"],
-        datasets: [{
-          label: 'Apartment Price',
-          data: [2300000, 2356000, 2365000, 4442000, 1550000, 1550000, 1590000, 1700000, 1720000, 1750000, 1750000, 1840000, 1880000, 1881000, 1911000, 1948044, 2000000, 2149000, 2150000, 2200000, 2210000, 2248000, 2268000, 2285000],
-          borderWidth: 3,
-                fill: false,
-                backgroundColor: ['rgba(255, 99, 132, 0.2)',
-                'rgba(255, 159, 64, 0.2)',
-                'rgba(255, 205, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(201, 203, 207, 0.2)',
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(255, 159, 64, 0.2)',
-                'rgba(255, 205, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(201, 203, 207, 0.2)',
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(255, 159, 64, 0.2)',
-                'rgba(255, 205, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(201, 203, 207, 0.2)',
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(255, 159, 64, 0.2)',
-                'rgba(255, 205, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)'],
-                borderColor: ['rgb(255, 99, 132)',
-                'rgb(255, 159, 64)',
-                'rgb(255, 205, 86)',
-                'rgb(75, 192, 192)',
-                'rgb(54, 162, 235)',
-                'rgb(153, 102, 255)',
-                'rgb(201, 203, 207)',
-                'rgb(255, 99, 132)',
-                'rgb(255, 159, 64)',
-                'rgb(255, 205, 86)',
-                'rgb(75, 192, 192)',
-                'rgb(54, 162, 235)',
-                'rgb(153, 102, 255)',
-                'rgb(201, 203, 207)',
-                'rgb(255, 99, 132)',
-                'rgb(255, 159, 64)',
-                'rgb(255, 205, 86)',
-                'rgb(75, 192, 192)',
-                'rgb(54, 162, 235)',
-                'rgb(153, 102, 255)',
-                'rgb(201, 203, 207)',
-                'rgb(255, 99, 132)',
-                'rgb(255, 159, 64)',
-                'rgb(255, 205, 86)',
-                'rgb(75, 192, 192)',]
-        },
-        ],
-      },
-    });
+    this.apart()
   }
-
 }
+
+
+
+
+

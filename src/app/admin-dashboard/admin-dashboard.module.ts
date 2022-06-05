@@ -21,7 +21,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MiniCardComponent } from './dashboard/components/mini-card/mini-card.component';
-import { DounghtChartComponent } from './dashboard/components/dounght-chart/dounght-chart.component';
+import {DoughnutChartComponent } from './dashboard/components/doughnut-chart/doughnut-chart.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
@@ -58,7 +58,7 @@ const routes:Routes=[
     PieChartComponent,
     TableComponent,
     MiniCardComponent,
-    DounghtChartComponent,
+    DoughnutChartComponent,
     QueryDialogComponent,
     QueryResultComponent,
     FilterQueryComponent,

@@ -1,12 +1,17 @@
 
 import { IResults } from './../Pages/IResults.interface';
 import { IProperty } from './../Pages/IProperty.interface';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient ,HttpHeaders} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { Property } from '../Pages/property';
 
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type': 'application/json',
+  }),
+};
 /*testing , Hello ya gama3a *
 
 /**export interface dataSetItems{
@@ -35,6 +40,13 @@ export class ApiService {
   constructor(private http: HttpClient) { }
   readonly APIUrl = "http://127.0.0.1:8000";
   readonly PhotoUrl = "http://127.0.0.1:8000/media/";
+  private pieUrl = 'http://127.0.0.1:8000/EdenApp/pieChart/';
+  private lineUrl = 'http://127.0.0.1:8000/EdenApp/lineChart/';
+  private barUrlApart ='http://127.0.0.1:8000/EdenApp/barChartApart/';
+  private barUrlVilla ='http://127.0.0.1:8000/EdenApp/barChartVilla/';
+  private barUrlTown ='http://127.0.0.1:8000/EdenApp/barChartTown/';
+  private barUrlTwin ='http://127.0.0.1:8000/EdenApp/barChartTwin/';
+  private polarUrl ='http://127.0.0.1:8000/EdenApp/polarChart/';
 
   postEmp(data: any) {
     return this.http.post("http://127.0.0.1:8000/Home/register/", data);
@@ -161,6 +173,77 @@ export class ApiService {
 
   postPredictionResults(data: any) {
     return this.http.post<any>("http://localhost:3000/predictionDetails", data);
+  }
+  pieChartData() {
+    const url = `${this.pieUrl}`;
+    return this.http
+      .get(url, httpOptions)
+      .toPromise()
+      .then((data) => {
+        return data;
+      });
+  }
+
+  lineChartData() {
+    const url = `${this.lineUrl}`;
+    return this.http
+      .get(url, httpOptions)
+      .toPromise()
+      .then((data) => {
+        return data;
+      });
+  }
+
+  barChartDataApart() {
+    const url = `${this.barUrlApart}`;
+    return this.http
+      .get(url, httpOptions)
+      .toPromise()
+      .then((data) => {
+        return data;
+      });
+  }
+
+
+  barChartDataVilla() {
+    const url = `${this.barUrlVilla}`;
+    return this.http
+      .get(url, httpOptions)
+      .toPromise()
+      .then((data) => {
+        return data;
+      });
+  }
+
+
+  barChartDataTown() {
+    const url = `${this.barUrlTown}`;
+    return this.http
+      .get(url, httpOptions)
+      .toPromise()
+      .then((data) => {
+        return data;
+      });
+  }
+
+  barChartDataTwin() {
+    const url = `${this.barUrlTwin}`;
+    return this.http
+      .get(url, httpOptions)
+      .toPromise()
+      .then((data) => {
+        return data;
+      });
+  }
+
+  doughnutChartData() {
+    const url = `${this.polarUrl}`;
+    return this.http
+      .get(url, httpOptions)
+      .toPromise()
+      .then((data) => {
+        return data;
+      });
   }
 
   /*results(){
