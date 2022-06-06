@@ -6,10 +6,6 @@ $active-bg-color: darken($main-color, 5%);
     &:hover {
       background-color: $active-bg-color;
     }
-    &:active {
-        background-color: $active-bg-color;
-        text-decoration: underline;
-    }
 }
 
 .navbar-dark .navbar-nav .active > .nav-link {
@@ -18,5 +14,5 @@ $active-bg-color: darken($main-color, 5%);
 
 .nav-item {
     border-left: 1px solid rgba(3, 82, 105, 0.1);
-    border-right: 0px solid rgba(255, 255, 255, 0.2);
+    border-right: 2px solid rgba(255, 255, 255, 0.2);
 }

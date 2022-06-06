@@ -107,6 +107,8 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
+              "src/favicon.png",
+              "favicon.png",
               "src/assets"
             ],
             "styles": [
@@ -119,5 +121,5 @@
       }
     }
   },
-  "defaultProject": "RealStateP"
+  "defaultProject": "New Eden"
 }
