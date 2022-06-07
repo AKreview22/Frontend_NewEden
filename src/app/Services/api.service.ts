@@ -40,13 +40,7 @@ export class ApiService {
   constructor(private http: HttpClient) { }
   readonly APIUrl = "http://127.0.0.1:8000";
   readonly PhotoUrl = "http://127.0.0.1:8000/media/";
-  private pieUrl = 'http://127.0.0.1:8000/EdenApp/pieChart/';
-  private lineUrl = 'http://127.0.0.1:8000/EdenApp/lineChart/';
-  private barUrlApart ='http://127.0.0.1:8000/EdenApp/barChartApart/';
-  private barUrlVilla ='http://127.0.0.1:8000/EdenApp/barChartVilla/';
-  private barUrlTown ='http://127.0.0.1:8000/EdenApp/barChartTown/';
-  private barUrlTwin ='http://127.0.0.1:8000/EdenApp/barChartTwin/';
-  private polarUrl ='http://127.0.0.1:8000/EdenApp/polarChart/';
+  private baseUrl = 'http://127.0.0.1:8000/EdenApp/pieChart/';
 
   postEmp(data: any) {
     return this.http.post("http://127.0.0.1:8000/Home/register/", data);
@@ -65,22 +59,22 @@ export class ApiService {
     return this.http.post(this.APIUrl + '/SaveFile', val);
   }
   postProp(data: any) {
-    return this.http.post<any>("http://localhost:3000/properties-list/", data);
+    return this.http.post<any>("http://127.0.0.1:8000/EdenManageProperty/addproperty/", data);
   }
   getProp() {
-    return this.http.get<any>("http://localhost:3000/properties-list/");
+    return this.http.get<any>("http://127.0.0.1:8000/EdenManageProperty/property/");
   }
   putProp(data: any, id: number) {
-    return this.http.put<any>("http://localhost:3000/properties-list/" + id, data);
+    return this.http.put<any>("http://127.0.0.1:8000/EdenManageProperty/property/" + id, data);
   }
   deleteProp(id: number) {
-    return this.http.delete<any>("http://localhost:3000/properties-list/" + id);
+    return this.http.delete<any>("http://127.0.0.1:8000/EdenManageProperty/property/" + id);
   }
   postCons(data: any) {
-    return this.http.post<any>("http://localhost:3000/Constraints/", data);
+    return this.http.post<any>("http://127.0.0.1:8000/Home/addConstraints/", data);
   }
   getCons() {
-    return this.http.get<any>("http://localhost:3000/Constraints/");
+    return this.http.get<any>("http://127.0.0.1:8000/Home/viewConstraints/");
   }
   putCons(data: any, id: number) {
     return this.http.put<any>("http://localhost:3000/Constraints/" + id, data);
@@ -135,7 +129,7 @@ export class ApiService {
     );
   }
   getAllProperties(): Observable<Property[]> {
-    return this.http.get("http://localhost:3000/propertyDetails").pipe(
+    return this.http.get('http://127.0.0.1:8000/EdenManageProperty/property/').pipe(
       map(data => {
         const propertiesArray: Array<Property> = [];
         for (const id in data) {
@@ -174,70 +168,8 @@ export class ApiService {
   postPredictionResults(data: any) {
     return this.http.post<any>("http://localhost:3000/predictionDetails", data);
   }
-  pieChartData() {
-    const url = `${this.pieUrl}`;
-    return this.http
-      .get(url, httpOptions)
-      .toPromise()
-      .then((data) => {
-        return data;
-      });
-  }
-
-  lineChartData() {
-    const url = `${this.lineUrl}`;
-    return this.http
-      .get(url, httpOptions)
-      .toPromise()
-      .then((data) => {
-        return data;
-      });
-  }
-
-  barChartDataApart() {
-    const url = `${this.barUrlApart}`;
-    return this.http
-      .get(url, httpOptions)
-      .toPromise()
-      .then((data) => {
-        return data;
-      });
-  }
-
-
-  barChartDataVilla() {
-    const url = `${this.barUrlVilla}`;
-    return this.http
-      .get(url, httpOptions)
-      .toPromise()
-      .then((data) => {
-        return data;
-      });
-  }
-
-
-  barChartDataTown() {
-    const url = `${this.barUrlTown}`;
-    return this.http
-      .get(url, httpOptions)
-      .toPromise()
-      .then((data) => {
-        return data;
-      });
-  }
-
-  barChartDataTwin() {
-    const url = `${this.barUrlTwin}`;
-    return this.http
-      .get(url, httpOptions)
-      .toPromise()
-      .then((data) => {
-        return data;
-      });
-  }
-
-  doughnutChartData() {
-    const url = `${this.polarUrl}`;
+  cryptoData() {
+    const url = `${this.baseUrl}`;
     return this.http
       .get(url, httpOptions)
       .toPromise()

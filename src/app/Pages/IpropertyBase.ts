@@ -1,18 +1,21 @@
 export interface IpropertyBase {
-    id:number;
-    area:number;
-    type:string;
-    bedroom: number;
-    bathroom: number;
-    level: number;
-    location:string;
-    alt:string;
-    image?: string;
-    image1?:string;
-    image2?:string;
-    image3?:string;
-    price:number;
-    details:string;
-    name:string;
+    id: number;
+  Name: string;
+  Type: string;
+  Level: number;
+  bathroom: number;
+  Finished: number;
+  Sold: number;
+  PriceinEGP: number;
+  Areainsqm: number;
+  Garden: number;
+  Bathrooms: number;
+  project_name: string;
+  Bedrooms: string
+ // PropertyImageFileNAme?: string | undefined;
+  image1?: string | undefined;
+  image2?: string | undefined;
+  image3?: string | undefined;
+  
 }
 

@@ -4,6 +4,8 @@ import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { PropertyDetailsService } from 'src/app/Services/property-details.service';
 import { ActivatedRoute } from '@angular/router';
 import { HostListener , ElementRef} from '@angular/core';
+import { ApiService } from 'src/app/Services/api.service';
+
 import { TabsetComponent } from 'ngx-bootstrap/tabs';
 import { NgxGalleryImage, NgxGalleryOptions , NgxGalleryAnimation } from '@kolkov/ngx-gallery';
 import { HomeComponent } from 'src/app/Pages/home/home.component';
@@ -26,7 +28,7 @@ export class PropertyCardComponent implements OnInit {
   //searchText:string = '';
 
 
-  constructor(private home:HomeComponent,private param:ActivatedRoute,private service:PropertyDetailsService,
+  constructor(private home:HomeComponent,private param:ActivatedRoute,private api:ApiService,
               private el:ElementRef, private housing:HousingService) { }
 
   @HostListener('click')
@@ -39,10 +41,9 @@ export class PropertyCardComponent implements OnInit {
 
   ngOnInit(): void {
     this.PropertyId = this.param.snapshot.paramMap.get('id');
-    console.log(this.PropertyId,'getproperty');
     if(this.PropertyId)
     {
-      this.propertyData = this.service.propertydetails.filter((value :any)=>{
+      this.propertyData = this.api.getAllProperties().subscribe((value :any)=>{
         return value.id == this.PropertyId;
       });
       console.log(this.propertyData,'propertyData>>')

@@ -1,31 +1,125 @@
 <h1 mat-dialog-title>Add Property Form</h1>
 <div mat-dialog-content>
     <form [formGroup]="propForm">
+
+
         <mat-form-field appearance="outline">
-            <mat-label>Number</mat-label>
-            <input formControlName="propNum" matInput type="number" placeholder="Placeholder">
+            <mat-label>ID</mat-label>
+            <input formControlName="id" matInput placeholder="Placeholder">
         </mat-form-field>
+
         <mat-form-field appearance="outline">
-            <mat-label>Bathrooms</mat-label>
-            <input formControlName="bathrooms" matInput type="number" placeholder="Placeholder">
+            <mat-label>Name</mat-label>
+            <input formControlName="Name" matInput placeholder="Placeholder">
         </mat-form-field>
-        <h3>Garden</h3>
-        <mat-checkbox formControlName="garden"></mat-checkbox><br><br>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Type</mat-label>
+            <mat-select formControlName="Type" placeholder="">
+                <mat-option value="Apartment">Apartment</mat-option>
+                <mat-option value="TwinHouse">Twin House</mat-option>
+                <mat-option value="TownHouse">Town House</mat-option>
+                <mat-option value="Villa">Villa</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+   
         <mat-form-field appearance="outline">
             <mat-label>Level</mat-label>
-            <input formControlName="level" matInput type="number" placeholder="Placeholder">
+            <mat-select formControlName="Level" placeholder="">
+                <mat-option value="1"> 1 level</mat-option>
+                <mat-option value="2">2 levels</mat-option>
+                <mat-option value="3">3 levels</mat-option>
+                <mat-option value="4">4 levels</mat-option>
+            </mat-select>
         </mat-form-field>
+       
+
         <mat-form-field appearance="outline">
-            <mat-label>Area</mat-label>
-            <input formControlName="area" matInput type="number" placeholder="Placeholder">
+            <mat-label>Sold</mat-label>
+            <mat-select formControlName="Sold" placeholder="">
+                <mat-option value="0">No</mat-option>
+                <mat-option value="1">Yes</mat-option>
+              
+            </mat-select>
         </mat-form-field>
+
+     
+
         <mat-form-field appearance="outline">
-            <mat-label>Price</mat-label>
-            <input formControlName="price" matInput type="number" placeholder="Placeholder">
+            <mat-label>Finished</mat-label>
+            <mat-select formControlName="Finished" placeholder="">
+                <mat-option value="1">Yes</mat-option>
+                <mat-option value="0">No</mat-option>
+        
+              
+            </mat-select>
         </mat-form-field>
+       
+         
+
+            <mat-form-field appearance="outline">
+                <mat-label>PriceinEGP</mat-label>
+                <input formControlName="PriceinEGP" matInput type="number" placeholder="Placeholder">
+            </mat-form-field>
+
+
+            <mat-form-field appearance="outline">
+                <mat-label>Areainsqm</mat-label>
+                <input formControlName="Areainsqm" matInput type="number" placeholder="Placeholder">
+            </mat-form-field>
+
+
+            
+         
+
+      
+            
+            <mat-form-field appearance="outline">
+                <mat-label>Garden</mat-label>
+                <mat-select formControlName="Garden" placeholder="">
+                    <mat-option value="1">Have a garden</mat-option>
+                    <mat-option value="0">Doesn't have a garden</mat-option>
+            
+                  
+                </mat-select>
+            </mat-form-field>
+           
+
+        <mat-form-field appearance="outline">
+            <mat-label>Bathrooms</mat-label>
+            <input formControlName="Bathrooms" matInput type="number" placeholder="Placeholder">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Bedrooms</mat-label>
+            <input formControlName="Bedrooms" matInput type="number" placeholder="Placeholder">
+        </mat-form-field>
+
+
+ 
+        <mat-form-field appearance="outline">
+            <mat-label>Seller id</mat-label>
+            <input formControlName="sellerID" matInput type="number" placeholder="Placeholder">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Selling date</mat-label>
+            <input formControlName="Date" matInput [matDatepicker]="picker1">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+            <mat-datepicker #picker1></mat-datepicker>
+          </mat-form-field>
+
+
+         
+
+
+
+
     </form>
 </div>
 <div mat-dialog-action [align]="'end'">
-    <button mat-raised-button color="warn" mat-dialog-close >Close</button>
+    <button mat-raised-button color="warn" mat-dialog-close>Close</button>
     <button style="margin-left: 8px;" mat-raised-button color="primary" (click)="addProp()">{{actionBtn}}</button>
 </div>

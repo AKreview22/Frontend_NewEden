@@ -38,7 +38,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.housingService.getAllProperties().subscribe(data => {
+    this.api.getAllProperties().subscribe(data => {
       this.properties = data;
 
       this.totalLength = data.length;
@@ -92,3 +92,7 @@ export class HomeComponent implements OnInit {
 
 
 }
+
+
+
+

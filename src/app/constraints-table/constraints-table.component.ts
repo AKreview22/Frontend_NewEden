@@ -2,6 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { ApiService } from 'src/app/Services/api.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
+import { Router } from '@angular/router';
+
 import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
@@ -11,13 +13,13 @@ import { MatTableDataSource } from '@angular/material/table';
 })
 export class ConstraintsTableComponent implements OnInit {
 
-  displayedColumns: string[] = ['Maximum Years', 'Interest', 'Minimum Deposite', 'Additional Expenses', 'Amount paid before delivery','action'];
+  displayedColumns: string[] = ['maxYears', 'Interest', 'minDeposit', 'addExpenses', 'paidBeforeDelivery','action'];
   dataSource!: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private api: ApiService) { }
+  constructor(private api: ApiService,private router:Router) { }
 
   ngOnInit(): void {
     this.getAllConst();
@@ -26,6 +28,7 @@ export class ConstraintsTableComponent implements OnInit {
     this.api.getCons()
       .subscribe({
         next: (res) => {
+          console.log(res)
           this.dataSource = new MatTableDataSource(res);
           this.dataSource.paginator = this.paginator;
           this.dataSource.sort = this.sort;
@@ -56,4 +59,7 @@ export class ConstraintsTableComponent implements OnInit {
     }
   }
 
+  addConst(){
+    this.router.navigateByUrl("constraints")
+  }
 }

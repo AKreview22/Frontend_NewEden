@@ -10,6 +10,5 @@ export interface IProperty extends IpropertyBase{
       //alt:string;
       //image?: string;
       //price:number;
-      details:string;
       //name:string;
 }

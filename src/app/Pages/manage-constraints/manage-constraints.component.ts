@@ -18,7 +18,7 @@ export class ManageConstraintsComponent implements OnInit {
   ngOnInit(): void {
     this.consForm=this.formBuilder.group({
       maxYears:['',Validators.required],
-      interest:['',Validators.required],
+      Interest:['',Validators.required],
       minDeposit:['',Validators.required],
       addExpenses:['',Validators.required],
       paidBeforeDelivery:['',Validators.required]

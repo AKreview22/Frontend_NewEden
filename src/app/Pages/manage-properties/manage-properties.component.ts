@@ -14,7 +14,7 @@ import { MatTableDataSource } from '@angular/material/table';
 })
 export class ManagePropertiesComponent implements OnInit {
 
-  displayedColumns: string[] = [ 'propNum', 'bathrooms', 'garden','level','area','price','action'];
+  displayedColumns: string[] = ['id','Name','Type','Level','Finished','Sold','PriceinEGP','Areainsqm','Garden','Bathrooms','Bedrooms','PropertyImageFileNAme','sellerID_id','Date','action' ];
   dataSource!: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -70,6 +70,9 @@ deleteProp(id:number){
     }
   })
 }
+
+
+
 applyFilter(event: Event) {
   const filterValue = (event.target as HTMLInputElement).value;
   this.dataSource.filter = filterValue.trim().toLowerCase();
