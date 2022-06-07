@@ -40,6 +40,13 @@ export class ApiService {
   constructor(private http: HttpClient) { }
   readonly APIUrl = "http://127.0.0.1:8000";
   readonly PhotoUrl = "http://127.0.0.1:8000/media/";
+  private pieUrl = 'http://127.0.0.1:8000/EdenApp/pieChart/';
+   private lineUrl = 'http://127.0.0.1:8000/EdenApp/lineChart/';
+   private barUrlApart ='http://127.0.0.1:8000/EdenApp/barChartApart/';
+   private barUrlVilla ='http://127.0.0.1:8000/EdenApp/barChartVilla/';
+   private barUrlTown ='http://127.0.0.1:8000/EdenApp/barChartTown/';
+   private barUrlTwin ='http://127.0.0.1:8000/EdenApp/barChartTwin/';
+   private polarUrl ='http://127.0.0.1:8000/EdenApp/polarChart/';
   private baseUrl = 'http://127.0.0.1:8000/EdenApp/pieChart/';
 
   postEmp(data: any) {
@@ -168,6 +175,73 @@ export class ApiService {
   postPredictionResults(data: any) {
     return this.http.post<any>("http://localhost:3000/predictionDetails", data);
   }
+
+   pieChartData() {
+     const url = `${this.pieUrl}`;
+     return this.http
+       .get(url, httpOptions)
+       .toPromise()
+       .then((data) => {
+         return data;
+       });
+   }
+
+   lineChartData() {
+     const url = `${this.lineUrl}`;
+     return this.http
+       .get(url, httpOptions)
+       .toPromise()
+       .then((data) => {
+         return data;
+       });
+   }
+
+   barChartDataApart() {
+     const url = `${this.barUrlApart}`;
+     return this.http
+       .get(url, httpOptions)
+       .toPromise()
+       .then((data) => {
+         return data;
+       });
+   }
+
+
+   barChartDataVilla() {
+     const url = `${this.barUrlVilla}`;
+     return this.http
+       .get(url, httpOptions)
+       .toPromise()
+       .then((data) => {
+         return data;
+       });
+   }
+
+
+   barChartDataTown() {
+     const url = `${this.barUrlTown}`;
+     return this.http
+       .get(url, httpOptions)
+       .toPromise()
+       .then((data) => {
+         return data;
+       });
+   }
+
+   barChartDataTwin() {
+     const url = `${this.barUrlTwin}`;
+     return this.http
+       .get(url, httpOptions)
+       .toPromise()
+       .then((data) => {
+         return data;
+       });
+   }
+
+   doughnutChartData() {
+     const url = `${this.polarUrl}`;
+     }
+
   cryptoData() {
     const url = `${this.baseUrl}`;
     return this.http
