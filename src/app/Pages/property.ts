@@ -14,11 +14,11 @@ export class Property implements IpropertyBase{
   Bathrooms: number;
   project_name: string;
   Bedrooms: string
- // PropertyImageFileNAme?: string | undefined;//
+  PropertyImageFileNAme?: string | undefined;//
   image1?: string | undefined;
   image2?: string | undefined;
   image3?: string | undefined;
-  
+
 
 
 
