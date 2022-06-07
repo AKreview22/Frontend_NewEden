@@ -240,17 +240,16 @@ export class ApiService {
 
    doughnutChartData() {
      const url = `${this.polarUrl}`;
+     return this.http
+     .get(url, httpOptions)
+     .toPromise()
+     .then((data) => {
+       return data;
+     });
+
      }
 
-  cryptoData() {
-    const url = `${this.baseUrl}`;
-    return this.http
-      .get(url, httpOptions)
-      .toPromise()
-      .then((data) => {
-        return data;
-      });
-  }
+
 
   /*results(){
     return this.http.get('http://localhost:3000/predictionResults')
