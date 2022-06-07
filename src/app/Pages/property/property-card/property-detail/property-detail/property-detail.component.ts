@@ -16,6 +16,8 @@ export class PropertyDetailComponent implements OnInit {
   property = new Property();
   galleryOptions: NgxGalleryOptions[];
   galleryImages: NgxGalleryImage[];
+
+  
   yearsList = ["3 Years", "5 Years" , "7 Years" , "10 Years"];
   propertyForm !: FormGroup;
 
