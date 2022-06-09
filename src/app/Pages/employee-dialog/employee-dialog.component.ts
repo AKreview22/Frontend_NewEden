@@ -34,7 +34,7 @@ export class EmployeeDialogComponent implements OnInit {
       this.empForm.controls['name'].setValue(this.editData.name);
       this.empForm.controls['email'].setValue(this.editData.email);
       this.empForm.controls['password'].setValue(this.editData.password);
-      this.empForm.controls['Role'].setValue(this.editData.empRole);
+      this.empForm.controls['Role'].setValue(this.editData.Role);
 
 
     }

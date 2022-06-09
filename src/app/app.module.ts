@@ -103,7 +103,7 @@ import { ConstraintsTableComponent } from './constraints-table/constraints-table
     NavbarComponent,
     LoginComponent,
     ConstraintsTableComponent,
-    
+
   ],
   imports: [
     BrowserModule,
@@ -149,7 +149,7 @@ import { ConstraintsTableComponent } from './constraints-table/constraints-table
     NgbModule,
     FlexLayoutModule,
     MatSidenavModule,
- 
+
   ],
   providers: [
     PricepredictionService,
@@ -158,6 +158,6 @@ import { ConstraintsTableComponent } from './constraints-table/constraints-table
   bootstrap: [AppComponent],
   entryComponents: [SellDetailsComponent],
 
-    
+
 })
 export class AppModule { }
