@@ -38,18 +38,7 @@ export class ConstraintsTableComponent implements OnInit {
         }
       })
   }
-  deleteConst(id: number) {
-    this.api.deleteCons(id)
-      .subscribe({
-        next: (res) => {
-          alert("Constraint deleted Successfully")
-          this.getAllConst();
-        },
-        error: () => {
-          alert("Error while deleting the record")
-        }
-      })
-  }
+ 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
