@@ -4,7 +4,6 @@ import { SellDetailsComponent } from './Pages/sell-details/sell-details.componen
 import { PropertyDetailComponent } from './Pages/property/property-card/property-detail/property-detail/property-detail.component';
 import { PropertyCardComponent } from './Pages/property/property-card/property-card/property-card.component';
 
-import { AnalyzeComponent } from './Pages/analyze/analyze.component';
 import { HomeComponent } from './Pages/home/home.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -18,7 +17,6 @@ import { PredictionResultsComponent } from './Pages/prediction-results/predictio
 
 const routes: Routes = [
   {path:'',component:HomeComponent},
-  {path:'analyze',component:AnalyzeComponent},
   {path:'login',component:LoginComponent},
   {path:'manage-constraints',component:ManageConstraintsComponent},
   {path:'manage-employee',component:ManageEmployeeComponent},

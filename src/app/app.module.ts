@@ -9,7 +9,6 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { HomeComponent } from './Pages/home/home.component';
 import { NavbarComponent } from './SharedPaged/navbar/navbar.component';
 import { FooterComponent } from './SharedPaged/footer/footer.component';
-import { AnalyzeComponent } from './Pages/analyze/analyze.component';
 
 
 import { PropertyCardComponent } from './Pages/property/property-card/property-card/property-card.component';
@@ -81,7 +80,6 @@ import { ConstraintsTableComponent } from './constraints-table/constraints-table
     AppComponent,
     NavbarComponent,
     FooterComponent,
-    AnalyzeComponent,
     ManageEmployeeComponent,
     ManageConstraintsComponent,
     ManagePropertiesComponent,
