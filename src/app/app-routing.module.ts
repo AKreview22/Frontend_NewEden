@@ -13,6 +13,9 @@ import { LoginComponent } from './Pages/login/login.component';
 import { ManageConstraintsComponent } from './Pages/manage-constraints/manage-constraints.component';
 import { ManageEmployeeComponent } from './Pages/manage-employee/manage-employee.component';
 import { ManagePropertiesComponent } from './Pages/manage-properties/manage-properties.component';
+import { PredictionResultsComponent } from './Pages/prediction-results/prediction-results.component';
+
+
 const routes: Routes = [
   {path:'',component:HomeComponent},
   {path:'analyze',component:AnalyzeComponent},
@@ -35,10 +38,12 @@ const routes: Routes = [
   {path:'constraints',component:ManageConstraintsComponent},
   {path:'login',component:LoginComponent},
   {path:'constTable',component:ConstraintsTableComponent},
-  {path:'admin-dashboard',loadChildren:()=>import("./admin-dashboard/admin-dashboard.module").then(m=>m.AdminDashboardModule)}
+  {path:'admin-dashboard',loadChildren:()=>import("./admin-dashboard/admin-dashboard.module").then(m=>m.AdminDashboardModule)},
+  {path: 'prediction-result',component: PredictionResultsComponent}
 
 
- 
+
+
 
 ];
 

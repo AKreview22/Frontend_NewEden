@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { PResults } from './../p-results';
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/Services/api.service';
+import { MatTableDataSource } from '@angular/material/table';
+
 
 
 @Component({
@@ -14,6 +16,8 @@ export class PredictionResultsComponent implements OnInit {
   public resultId: number;
   result = new PResults();
   //resultList: any;
+  dataSource!: MatTableDataSource<any>;
+
 
   constructor(private api : ApiService, private http:HttpClient) {
   }
@@ -26,9 +30,15 @@ export class PredictionResultsComponent implements OnInit {
     //this.getResultList();
   }
 
-  /*getResultList(){
-    this.http.get('http://localhost:3000/predictionDetails').subscribe((res:any) => {
-    this.resultList = res;
-    });
-  }*/
+  getResults(){
+    this.api.postPredictionResults(this.result).subscribe({
+      next:(res) =>{
+        this.dataSource=new MatTableDataSource(res);
+      },
+      error:(err) =>
+      alert("Error while Fetching Data")
+    })
+
+  }
+
 }

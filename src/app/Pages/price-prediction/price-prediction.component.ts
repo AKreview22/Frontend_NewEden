@@ -4,6 +4,9 @@ import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms'
 import { MatDialog } from '@angular/material/dialog';
 import { PricepredictionService } from 'src/app/Services/priceprediction.service';
 import { PredictionResultsComponent } from '../prediction-results/prediction-results.component';
+import { Router } from '@angular/router';
+
+
 
 @Component({
   selector: 'app-price-prediction',
@@ -12,10 +15,10 @@ import { PredictionResultsComponent } from '../prediction-results/prediction-res
 })
 export class PricePredictionComponent implements OnInit {
 
-  constructor(public pricePredictionService: PricepredictionService, private formBuilder : FormBuilder , private dialog: MatDialog ,private api:ApiService) { }
+  constructor(public pricePredictionService: PricepredictionService, private formBuilder : FormBuilder , private router: Router ,private api:ApiService) { }
 
-  locations =[{id:1 ,value:"North Coast"}, {id:2, value:"6th October"},{ id:3, value: "Al Ain Al Sokhna"},{id:4, value:"Mostakbal City"},{id:5, value:"New Adminstrative Capital"},
-              {id:6, value:"New Helioplis City"},{id:7, value:"New Cairo"},{id:8, value:"Shorok City"}]
+  locations =[{id:1 ,value:"Apartment"}, {id:2, value:"Bungalow"},{ id:3, value: "Chalet"},{id:4, value:"Duplix"},{id:5, value:"Hotel Apartment"},
+              {id:6, value:"TownHouse"},{id:7, value:"Studio"},{id:8, value:"Penthouse"},{id:9, value:"Twin House"},{id:10, value:"Villa"},{id:11, value:"Whole Building"}]
   predictionForm !: FormGroup;
   predictionDetails: Array<any>;
 
@@ -27,20 +30,16 @@ export class PricePredictionComponent implements OnInit {
     });*/
 
     this.predictionForm = this.formBuilder.group({
-      area : ['',Validators.required],
-      type: ['',Validators.required],
-      bedroom: ['',Validators.required],
-      bathroom: ['',Validators.required],
-      location: ['',Validators.required]
+      area_sqm : ['',Validators.required],
+      type_name: ['',Validators.required],
+      bedrooms: ['',Validators.required],
+      bathrooms: ['',Validators.required],
+      location_name: ['',Validators.required]
     })
   }
 
-  /*prediction(data){
-
-  }*/
-
-  openDialog() {
-    this.dialog.open(PredictionResultsComponent, {});
+  ViewResult(){
+    this.router.navigateByUrl("prediction-result")
   }
 
 }
