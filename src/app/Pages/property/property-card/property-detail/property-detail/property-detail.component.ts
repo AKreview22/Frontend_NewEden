@@ -17,7 +17,7 @@ export class PropertyDetailComponent implements OnInit {
   galleryOptions: NgxGalleryOptions[];
   galleryImages: NgxGalleryImage[];
 
-  
+
   yearsList = ["3 Years", "5 Years" , "7 Years" , "10 Years"];
   propertyForm !: FormGroup;
 
@@ -89,7 +89,6 @@ export class PropertyDetailComponent implements OnInit {
       deliverDate: ['',Validators.required],
       equalInstall: [false]
     })
-    this.getSellDetails();
   }
 
 
@@ -104,6 +103,22 @@ export class PropertyDetailComponent implements OnInit {
     this.router.navigate(['property-detail' , this.propertyId]);
   }
 
+
+  onCalc(){
+    if(this.propertyForm.valid){
+      this.api.postCalcPayment(this.propertyForm.value).subscribe({
+        next:(res)=>{
+          console.log(res);
+        },
+        error:()=>{
+          alert("Error Happened While Selling the Property")
+        }
+        
+      })
+      
+    }
+}
+  
   onSale(){
     if(this.propertyForm.valid){
       this.api.postSellData(this.propertyForm.value).subscribe({
@@ -117,17 +132,6 @@ export class PropertyDetailComponent implements OnInit {
         }
       })
     }
-  }
-
-  getSellDetails(){
-    this.api.getSellData().subscribe({
-      next : (res)=>{
-        console.log(res);
-      },
-       error:(err)=>{
-        alert("Error while fetching data")
-      }
-    })
   }
 
 

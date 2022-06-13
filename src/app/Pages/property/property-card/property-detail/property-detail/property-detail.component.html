@@ -11,11 +11,9 @@
       </div>
       <div class="card-body">
         <h1 class="card-title">{{property.Name}}</h1>
-        <div>
-          <strong>in {{property.Type}}</strong>
-        </div> <hr>
+       <hr>
           <div>
-            <i class="fas fa-home"></i> {{property.PriceinEGP}}
+            <i class="fas fa-home"></i> {{property.Type}}
           </div>
           <div>
             <strong>Price: </strong>{{property.PriceinEGP}}
@@ -75,10 +73,11 @@
                  <mat-radio-group formControlName="years" class="radio-group">
                    <mat-radio-button class="radio-button" *ngFor="let years of yearsList" [value]="years">{{years}}</mat-radio-button>
                  </mat-radio-group>
-                 <mat-form-field appearance="outline">
-                    <mat-label>Overall Price</mat-label>
-                    <input formControlName="overallPrice" matInput type="number" placeholder="Overall Price">
-                  </mat-form-field>
+
+                 <div mat-dialog-action [align]="'center'">
+                  <button mat-raised-button color="primary" (click)="onCalc()" [disabled]="propertyForm.invalid">Calculate Payments</button>
+                </div>
+                    <mat-label><h3>Overall Price : {{property.PriceinEGP}}</h3></mat-label>
                   <mat-form-field appearance="outline">
                     <mat-label>Monthly Payment</mat-label>
                     <input formControlName="monthly" matInput type="number" placeholder="Monthly Payments">

@@ -123,10 +123,15 @@ export class ApiService {
   postSellData(data: any) {
     return this.http.post<any>("http://localhost:3000/sellDetails/", data);
   }
-
-  getSellData() {
-    return this.http.get<any>("http://localhost:3000/sellDetails");
+  postCalcPayment(data: any){
+    return this.http.post<any>("http://127.0.0.1:8000/Home/calc/",data);
   }
+
+  getPredictionResult()
+  {
+    return this.http.get("http://127.0.0.1:8000/Home/predictionResult/")
+  }
+
 
   getProperty(id: number) {
     return this.getAllProperties().pipe(
@@ -149,9 +154,6 @@ export class ApiService {
     );
   }
 
-  /*postPredictionDetails(details: any){
-    return this.http.post<any>("http://localhost:3000/predictionDetails", details)
-  }*/
   getPredictionResults(): Observable<IResults[]> {
     return this.http.get('http://localhost:3000/predictionDetails').pipe(
       map(res => {
@@ -164,17 +166,11 @@ export class ApiService {
     );
   }
 
-  getResult(area: number) {
-    return this.getPredictionResults().pipe(
-      map(resultsArray => {
-        return resultsArray.find(r => r.area === area)
-      })
-    );
-  }
-
   postPredictionResults(data: any) {
     return this.http.post<any>("http://localhost:3000/predictionDetails", data);
   }
+
+
 
    pieChartData() {
      const url = `${this.pieUrl}`;
