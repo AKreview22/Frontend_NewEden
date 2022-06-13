@@ -1,7 +1,6 @@
 import { ApiService } from 'src/app/Services/api.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
-import { MatDialog } from '@angular/material/dialog';
 import { PricepredictionService } from 'src/app/Services/priceprediction.service';
 import { PredictionResultsComponent } from '../prediction-results/prediction-results.component';
 import { Router } from '@angular/router';

@@ -13,8 +13,8 @@ import { MatTableDataSource } from '@angular/material/table';
 })
 export class PredictionResultsComponent implements OnInit {
 
-  public resultId: number;
-  result = new PResults();
+  //public resultId: number;
+  //result = new PResults();
   //resultList: any;
   dataSource!: MatTableDataSource<any>;
 
@@ -23,9 +23,9 @@ export class PredictionResultsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.api.getResult(this.resultId).subscribe( res => {
+   /* this.api.getResult(this.resultId).subscribe( res => {
       this.result.id = res.id;
-    });
+    });*/
 
     //this.getResultList();
   }

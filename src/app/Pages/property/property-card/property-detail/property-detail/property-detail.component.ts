@@ -89,7 +89,6 @@ export class PropertyDetailComponent implements OnInit {
       deliverDate: ['',Validators.required],
       equalInstall: [false]
     })
-    this.getSellDetails();
   }
 
 
@@ -111,13 +110,15 @@ export class PropertyDetailComponent implements OnInit {
         next:(res)=>{
           console.log(res);
         },
-        else:()=>{
-          alert("Error While Inserting Data.")
+        error:()=>{
+          alert("Error Happened While Selling the Property")
         }
+        
       })
+      
     }
-
-    }
+}
+  
   onSale(){
     if(this.propertyForm.valid){
       this.api.postSellData(this.propertyForm.value).subscribe({
@@ -131,17 +132,6 @@ export class PropertyDetailComponent implements OnInit {
         }
       })
     }
-  }
-
-  getSellDetails(){
-    this.api.getSellData().subscribe({
-      next : (res)=>{
-        console.log(res);
-      },
-       error:(err)=>{
-        alert("Error while fetching data")
-      }
-    })
   }
 
 

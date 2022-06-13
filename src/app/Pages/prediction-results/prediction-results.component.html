@@ -1,6 +1,7 @@
 <div class="container">
   <div style="margin-top: 10px;">
     <div class="mat-elevation-z8">
+      
       <table mat-table [dataSource]="dataSource" matSort>
 
         <!-- id Column -->
@@ -31,21 +32,21 @@
         <ng-container matColumnDef="modeOfPrice">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> modeOfPrice </th>
           <td mat-cell *matCellDef="let row"> {{row.modeOfPrice}} </td>
-
+        </ng-container>
           <ng-container matColumnDef="priceRange">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Price Range </th>
             <td mat-cell *matCellDef="let row"> {{row.priceRange}} </td>
-
+          </ng-container>
             <ng-container matColumnDef="minimumPrice">
               <th mat-header-cell *matHeaderCellDef mat-sort-header> minimumPrice </th>
               <td mat-cell *matCellDef="let row"> {{row.minimumPrice}} </td>
-
+            </ng-container>   
 
             <ng-container matColumnDef="predictedPrice">
               <th mat-header-cell *matHeaderCellDef mat-sort-header> Predicted Price </th>
               <td mat-cell *matCellDef="let row"> {{row.predictedPrice}} </td>
-        </ng-container>
-
-
-
+            </ng-container>
+      </table>
+    </div>
   </div>
+</div>

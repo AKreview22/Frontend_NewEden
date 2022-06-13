@@ -161,10 +161,10 @@ export class ApiService {
     );
   }
 
-  getResult(area: number) {
+  getResult(id: number) {
     return this.getPredictionResults().pipe(
       map(resultsArray => {
-        return resultsArray.find(r => r.area === area)
+        return resultsArray.find(r => r.id === id)
       })
     );
   }

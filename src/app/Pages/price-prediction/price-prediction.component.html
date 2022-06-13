@@ -1,43 +1,40 @@
-<div class="container">
-  <mat-toolbar>
-    <span class="fill-remaining-space"></span>
-    <span>Predict your ideal Property</span>
-    <span class="fill-remaining-space"></span>
-  </mat-toolbar>
-  <form [formGroup]="pricePredictionService.form"  class="normal-form">
-    <mat-grid-list cols="2" rowHeight="300px">
-      <mat-grid-tile>
-        <div class="controles-container">
-          <input type="hidden" formControlName="$key">
-          <mat-form-field appearance="outline">
-            <mat-label>Area</mat-label>
-            <input formControlName="area_sqm" matInput type="number" placeholder="Area">
-          </mat-form-field>
-          <mat-form-field appearance="outline">
-            <mat-label>Type</mat-label>
-            <input formControlName="type_name" matInput placeholder="Type">
-          </mat-form-field>
-          <label>Location</label>
+
+<form [formGroup]="predictionForm">
+  <mat-card>
+      <mat-card-header style="font-weight: bold; font-size: large; padding: 5px;">
+        Predict your ideal Property
+      </mat-card-header>
+      <mat-card-content>
+          <div>
+                  <label>Type</label>
+                  <mat-form-field appearance="outline">
+                    <input formControlName="type_name" matInput  placeholder="Type">
+                 </mat-form-field>
+
+                  <label>Location</label>
               <mat-form-field appearance="outline">
                   <input formControlName="location_name" matInput  placeholder="Location">
               </mat-form-field>
-        </div>
-      </mat-grid-tile>
-      <mat-grid-tile>
-        <div class="controles-container">
-          <mat-form-field appearance="outline">
-            <mat-label>Bedrooms</mat-label>
-            <input formControlName="bedrooms" matInput type="number" placeholder="Bedrooms">
-          </mat-form-field>
-          <mat-form-field appearance="outline">
-            <mat-label>Bathrooms</mat-label>
-            <input formControlName="bathrooms" matInput type="number" placeholder="Bathrooms">
-          </mat-form-field>
-          <div class="button-row">
-            <button mat-raised-button color="primary" (click)="ViewResult()" [disabled]="pricePredictionService.form.invalid">Predict</button>
-          </div>
-        </div>
-      </mat-grid-tile>
-    </mat-grid-list>
-  </form>
-</div>
+
+                      <label>Area</label>
+                  <mat-form-field appearance="outline">
+                      <input formControlName="area_sqm" matInput type="number" placeholder="Area">
+                  </mat-form-field>
+
+                  <label>Bathrooms</label>
+                  <mat-form-field appearance="outline">
+                      <input formControlName="bathrooms" matInput type="number" placeholder="Bathrooms">
+                  </mat-form-field>
+
+                      <label>Bedrooms</label>
+                  <mat-form-field appearance="outline">
+                      <input formControlName="bedrooms" matInput type="number" placeholder="Bedrooms">
+                  </mat-form-field>
+
+              </div>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="primary" (click)="ViewResult()" [disabled]="predictionForm.invalid">Predict</button>
+      </mat-card-actions>
+  </mat-card>
+</form>
