@@ -127,6 +127,11 @@ export class ApiService {
     return this.http.post<any>("http://127.0.0.1:8000/Home/calc/",data);
   }
 
+  getPredictionResult()
+  {
+    return this.http.get("http://127.0.0.1:8000/Home/predictionResult/")
+  }
+
 
   getProperty(id: number) {
     return this.getAllProperties().pipe(
@@ -161,17 +166,11 @@ export class ApiService {
     );
   }
 
-  getResult(id: number) {
-    return this.getPredictionResults().pipe(
-      map(resultsArray => {
-        return resultsArray.find(r => r.id === id)
-      })
-    );
-  }
-
   postPredictionResults(data: any) {
     return this.http.post<any>("http://localhost:3000/predictionDetails", data);
   }
+
+
 
    pieChartData() {
      const url = `${this.pieUrl}`;

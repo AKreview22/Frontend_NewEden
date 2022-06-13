@@ -1,8 +1,10 @@
 import { HttpClient } from '@angular/common/http';
-import { PResults } from './../p-results';
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/Services/api.service';
 import { MatTableDataSource } from '@angular/material/table';
+import { PricePredictionComponent } from '../price-prediction/price-prediction.component';
+import { MatDialog} from '@angular/material/dialog';
+
 
 
 
@@ -13,32 +15,42 @@ import { MatTableDataSource } from '@angular/material/table';
 })
 export class PredictionResultsComponent implements OnInit {
 
-  //public resultId: number;
-  //result = new PResults();
-  //resultList: any;
+  displayedColumns: string[] = ['averagePrice','housesQuantity', 'maximumPrice' , 'medianOfPrice' , 'modeOfPrice','priceRange','minimumPrice','predictedPrice','action'];
   dataSource!: MatTableDataSource<any>;
 
 
-  constructor(private api : ApiService, private http:HttpClient) {
-  }
+  constructor(private dialog:MatDialog,private api:ApiService) { }
 
   ngOnInit(): void {
-   /* this.api.getResult(this.resultId).subscribe( res => {
-      this.result.id = res.id;
-    });*/
-
-    //this.getResultList();
+    this.getPredictionResult();
   }
+  isAccessed(){
 
-  getResults(){
-    this.api.postPredictionResults(this.result).subscribe({
-      next:(res) =>{
+  }
+  openDialog(){
+    this.dialog.open(PricePredictionComponent,{
+      width: '30%'
+    }).afterClosed().subscribe(val=>{
+      if(val === 'Saved'){
+        this.getPredictionResult();
+      }
+    })
+  }
+  getPredictionResult(){
+    this.api.getEmp()
+    .subscribe({
+      next:(res)=>{
         this.dataSource=new MatTableDataSource(res);
       },
-      error:(err) =>
-      alert("Error while Fetching Data")
+      error:(err)=>{
+        alert("Error while fetching the data!!")
+      }
     })
-
   }
 
+
+
 }
+
+
+/* */
