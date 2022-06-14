@@ -19,31 +19,23 @@ export class SellDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.propertyForm = this.formBuilder.group({
       deposit : ['',Validators.required],
-      years: ['',Validators.required],
-      monthly: ['',Validators.required],
-      overallPrice: ['',Validators.required],
-      deliverDate: ['',Validators.required],
-      equalInstall: [false]
+      years: ['',Validators.required]
     })
   }
 
-  onSale(){
+  onCalc(){
     if(this.propertyForm.valid){
-      this.api.postSellData(this.propertyForm.value).subscribe({
+      this.api.postCalcPayment(this.propertyForm.value).subscribe({
         next:(res)=>{
-          alert("Property Has Been Selled Successfully!");
-          this.propertyForm.reset();
-          this.dialogRef.close('Sell Successfully');
+          console.log(res);
         },
         error:()=>{
           alert("Error Happened While Selling the Property")
         }
+
       })
+
     }
   }
-
-  /*getPropertyData(data){
-    console.warn(data);
-  }*/
 
 }

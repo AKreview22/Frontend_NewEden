@@ -28,7 +28,6 @@ import { NgxPaginationModule } from 'ngx-pagination';
 
 
 import { FilterPipe } from './Pipe/filter.pipe';
-import { SortPipe } from './Pipe/sort.pipe';
 
 import {MatSliderModule} from '@angular/material/slider';
 
@@ -36,6 +35,8 @@ import {MatRadioModule} from '@angular/material/radio';
 import { MatGridListModule } from '@angular/material/grid-list'
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import {MatListModule} from '@angular/material/list';
+
 
 import {MatTabsModule} from '@angular/material/tabs';
 
@@ -89,11 +90,10 @@ import { ConstraintsTableComponent } from './constraints-table/constraints-table
     PropertyListComponent,
     PropertyDetailComponent,
     FilterPipe,
-    SortPipe,
     SellDetailsComponent,
     PricePredictionComponent,
     PredictionResultsComponent,
-     EmployeeDialogComponent,
+    EmployeeDialogComponent,
     ManagePropertiesComponent,
     PropertiesDialogComponent,
     ManageEmployeeComponent,
@@ -147,7 +147,7 @@ import { ConstraintsTableComponent } from './constraints-table/constraints-table
     NgbModule,
     FlexLayoutModule,
     MatSidenavModule,
-
+    MatListModule
   ],
   providers: [
     PricepredictionService,

@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/Services/api.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { PricePredictionComponent } from '../price-prediction/price-prediction.component';
-import { MatDialog} from '@angular/material/dialog';
+import { MatDialog , MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 
 
@@ -24,14 +24,12 @@ export class PredictionResultsComponent implements OnInit {
   ngOnInit(): void {
     this.getPredictionResult();
   }
-  isAccessed(){
 
-  }
   openDialog(){
     this.dialog.open(PricePredictionComponent,{
       width: '30%'
     }).afterClosed().subscribe(val=>{
-      if(val === 'Saved'){
+      if(val === 'Predict'){
         this.getPredictionResult();
       }
     })
@@ -52,5 +50,3 @@ export class PredictionResultsComponent implements OnInit {
 
 }
 
-
-/* */

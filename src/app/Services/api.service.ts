@@ -127,11 +127,18 @@ export class ApiService {
     return this.http.post<any>("http://127.0.0.1:8000/EdenApp/calc/",data);
   }
 
+  getCalcPayment(){
+    return this.http.get("http://127.0.0.1:8000/EdenApp/calc/");
+  }
+
   getPredictionResult()
   {
     return this.http.get("http://127.0.0.1:8000/EdenApp/predictionResults/")
   }
 
+  postPredictionResults(data: any) {
+    return this.http.post<any>("http://127.0.0.1:8000/EdenApp/pricePrediction/", data);
+  }
 
   getProperty(id: number) {
     return this.getAllProperties().pipe(
@@ -153,12 +160,6 @@ export class ApiService {
       })
     );
   }
-
-
-  postPredictionResults(data: any) {
-    return this.http.post<any>("http://127.0.0.1:8000/EdenApp/pricePrediction/", data);
-  }
-
 
 
    pieChartData() {
