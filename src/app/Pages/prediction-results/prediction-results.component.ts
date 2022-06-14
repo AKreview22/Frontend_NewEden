@@ -15,7 +15,7 @@ import { MatDialog} from '@angular/material/dialog';
 })
 export class PredictionResultsComponent implements OnInit {
 
-  displayedColumns: string[] = ['averagePrice','housesQuantity', 'maximumPrice' , 'medianOfPrice' , 'modeOfPrice','priceRange','minimumPrice','predictedPrice'];
+  displayedColumns: string[] = ['predictedPrice','numberOfElements', 'highestPrice' , 'lowestPrice' , 'rangePrice','averagePrice','modePrice','medianPrice'];
   dataSource!: MatTableDataSource<any>;
 
 
