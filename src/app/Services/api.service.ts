@@ -123,8 +123,8 @@ export class ApiService {
   postSellData(data: any) {
     return this.http.post<any>("http://127.0.0.1:8000/Home/sell/", data);
   }
-  postCalcPayment(data: any){
-    return this.http.post<any>("http://127.0.0.1:8000/Home/calc/",data);
+  postCalcPayment(data: any, id: number){
+    return this.http.put<any>("http://127.0.0.1:8000/Home/calc/" + id, data);
   }
 
   getCalcPayment(){

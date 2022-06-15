@@ -25,7 +25,7 @@ export class SellDetailsComponent implements OnInit {
 
   onCalc(){
     if(this.propertyForm.valid){
-      this.api.postCalcPayment(this.propertyForm.value).subscribe({
+      this.api.postCalcPayment(this.propertyForm.value,this.property.id).subscribe({
         next:(res)=>{
           console.log(res);
         },
