@@ -103,7 +103,6 @@ export class PropertyDetailComponent implements OnInit {
   getCalc(){
   this.api.getCalcPayment().subscribe({
     next:(res) => {
-      this.res = res;
     }
   })
 }
