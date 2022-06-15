@@ -1,7 +1,6 @@
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a routerLink="" routerLinkActive="active-link"
-        [routerLinkActiveOptions]="{exact:true}"><i class="fas fa-home"></i> Home</a></li>
+    <li class="breadcrumb-item"><a routerLink=""  routerLinkActive="active-link"  [routerLinkActiveOptions]="{exact:true}"><i class="fas fa-home"></i> Home</a></li>
   </ol>
 </nav>
 <div class="row shadow-lg">
@@ -12,17 +11,17 @@
       </div>
       <div class="card-body">
         <h1 class="card-title">{{property.Name}}</h1>
-        <hr>
-        <div>
-          <i class="fas fa-home"></i> {{property.Type}}
-        </div>
-        <div>
-          <strong>Price: </strong>{{property.PriceinEGP}}
-        </div>
+       <hr>
+          <div>
+            <i class="fas fa-home"></i> {{property.Type}}
+          </div>
+          <div>
+            <strong>Price: </strong>{{property.PriceinEGP}}
+          </div>
       </div>
       <div class="card-footer">
-        <button mat-raised-button color="primary" (click)="onSale()" style=" width: 10%;">
-          Sell Property
+        <button mat-raised-button color="primary" (click)="openDialog()" style=" width: 10%;">
+          Calculate Payment
         </button>
       </div>
     </div>
@@ -31,107 +30,74 @@
     <div class="tab-panel p-3">
       <mat-tab-group animationDuration="1000ms">
         <mat-tab label="Overview">
-          <div class="row">
-            <div class="col-sm-10">
-              <div class="heading">
-                <strong>Finished:</strong>
-                <p>{{property.Finished}}</p>
-              </div>
-            </div>
-            <div class="col-sm-6">
-              <div class="heading">
-                <strong>Project Name:</strong>
-                <p>{{property.Name}}</p>
-              </div>
-              <div class="heading">
-                <strong>Status</strong>
-                <p>{{property.Sold}}</p>
-              </div>
-              <div class="heading">
-                <strong>Level Number:</strong>
-                <p>{{property.Level}}</p>
-              </div>
-            </div>
-
-            <div class="col-sm-6">
-              <div class="heading">
-                <strong>Area: </strong>
-                <p>{{property.Areainsqm}}<sup>2</sup></p>
-              </div>
-              <div class="heading">
-                <strong>BHK:</strong>
-                <p>
-                  <i class="fas fa-bed"></i> {{property.Bedrooms}}
-                  <i class="fas fa-bath"></i> {{property.Bathrooms}}
-                </p>
-              </div>
-            </div>
-          </div>
-        </mat-tab>
-      </mat-tab-group>
-
-        <mat-tab label="Sell Details">
-          <div mat-dialog-content>
-            <!--<form [formGroup]="propertyForm">
-                <mat-+-field appearance="outline">
-                  <mat-label>Deposit</mat-label>
-                  <input formControlName="deposit" matInput type="number" placeholder="Deposit">
-                </mat-form-field><br>
-                <label><h3>Years: </h3></label><br>
-                 <mat-radio-group formControlName="years" class="radio-group">
-                   <mat-radio-button class="radio-button" *ngFor="let years of yearsList" [value]="years">{{years}}</mat-radio-button>
-                 </mat-radio-group>
-
-                 <div mat-dialog-action [align]="'center'">
-                  <button mat-raised-button color="primary" (click)="onCalc()" [disabled]="propertyForm.invalid">Calculate Payments</button>
-                </div>
-                    <mat-label><h3>Overall Price : {{property.PriceinEGP}}</h3></mat-label>
-                  <mat-form-field appearance="outline">
-                    <mat-label>Monthly Payment</mat-label>
-                    <input formControlName="monthly" matInput type="number" placeholder="Monthly Payments">
-                  </mat-form-field>
-                  <mat-form-field appearance="outline">
-                    <mat-label>Deliver Date:</mat-label>
-                    <input formControlName="deliverDate" matInput [matDatepicker]="picker">
-                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                    <mat-datepicker #picker></mat-datepicker>
-                  </mat-form-field>
-                  <mat-checkbox formControlName="equalInstall">Equal Installments</mat-checkbox>
-              </form>
-            </div>
-            <div mat-dialog-action [align]="'center'">
-              <button mat-raised-button color="primary" (click)="onSale()" [disabled]="propertyForm.invalid">Sale</button>
-            </div>-->
-           <!-- <div class="row">
+            <div class="row">
               <div class="col-sm-10">
-                <div>
-                  <strong>Overlall Price:</strong>
-                  <p>{{res.apartmentPrice}}</p>
+                <div class="heading">
+                  <strong>Finished:</strong>
+                  <p>{{property.Finished}}</p>
                 </div>
-                <div>
-                  <strong>Added expenses:</strong>
-                  <p>{{res.addExp}}</p>
-                </div>
-                <div>
-                  <strong>Grand total with interest:</strong>
-                  <p>{{res.totalPaid}}</p>
-                </div>
-                <div>
-                  <strong>Monthly installment:</strong>
-                  <p>{{res.payingPerMonth}}</p>
-                </div>
-
-                <div>
-                  <strong>Receiving date:</strong>
-                  <p>{{res.dateOfReceipt}}</p>
-                </div>
-
               </div>
+              <div class="col-sm-6">
+                <div class="heading">
+                  <strong>Project Name:</strong>
+                  <p>{{property.Name}}</p>
+                </div>
+                <div class="heading">
+                  <strong>Status</strong>
+                <p>{{property.Sold}}</p>
+                </div>
+                <div class="heading">
+                  <strong>Level Number:</strong>
+                  <p>{{property.Level}}</p>
+                </div>
+              </div>
+
+                <div class="col-sm-6">
+                  <div class="heading">
+                      <strong>Area: </strong>
+                      <p>{{property.Areainsqm}}<sup>2</sup></p>
+                  </div>
+                  <div class="heading">
+                    <strong>BHK:</strong>
+                    <p>
+                    <i class="fas fa-bed"></i> {{property.Bedrooms}}
+                    <i class="fas fa-bath"></i> {{property.Bathrooms}}
+                  </p>
+                  </div>
+                </div>
             </div>
+        </mat-tab>
+        <mat-tab label="Sell Details">
+            <table mat-table [dataSource]="dataSource" matSort>
+
+              <!-- overallPrice Column -->
+            <ng-container matColumnDef="overallPrice">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Overall Price </th>
+              <td mat-cell *matCellDef="let row" style="padding-left :10" style="padding-right:10"> {{row.overallPrice}} </td>
+            </ng-container>
+
+            <!-- monthlyPayment Column -->
+            <ng-container matColumnDef="monthlyPayment">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Monthly Payment </th>
+              <td mat-cell *matCellDef="let row" style="padding-left :10" style="padding-right:10"> {{row.monthlyPayment}} </td>
+            </ng-container>
+
+            <!-- deliverDate Column -->
+            <ng-container matColumnDef="deliverDate">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Deliver Date </th>
+              <td mat-cell *matCellDef="let row"> {{row.deliverDate}} </td>
+            </ng-container>
+
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+              </tr>
+            </table>
             <div mat-dialog-action [align]="'center'">
               <button mat-raised-button color="primary" (click)="onSale()">Sale</button>
             </div>
-        
-  
 
-</div>-->
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
+</div>

@@ -6,6 +6,8 @@ import { NgxGalleryAnimation, NgxGalleryImage, NgxGalleryOptions } from '@kolkov
 import { ApiService } from 'src/app/Services/api.service';
 import { FormGroup , FormBuilder , Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { MatTableDataSource } from '@angular/material/table';
+
 
 @Component({
   selector: 'app-property-detail',
@@ -13,6 +15,9 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./property-detail.component.scss']
 })
 export class PropertyDetailComponent implements OnInit {
+
+  displayedColumns: string[] = ['overallPrice','monthlyPayment', 'deliverDate'];
+  dataSource!: MatTableDataSource<any>;
 
   public propertyId:number;
   property = new Property();
@@ -93,7 +98,7 @@ export class PropertyDetailComponent implements OnInit {
     this.dialog.open(SellDetailsComponent,{
       width: '30%'
     }).afterClosed().subscribe(val=>{
-      if(val === 'Saved'){
+      if(val === 'Calculate'){
         this.getCalc();
       }
     })
@@ -101,11 +106,29 @@ export class PropertyDetailComponent implements OnInit {
 
 
   getCalc(){
-  this.api.getCalcPayment().subscribe({
-    next:(res) => {
-    }
-  })
-}
+    this.api.getCalcPayment()
+    .subscribe({
+      next:(res:any)=>{
+        this.dataSource=new MatTableDataSource(res);
+      },
+      error:(err)=>{
+        alert("Error while calculating the data!!")
+      }
+    })
+  }
+
+
+
+  onSale(){
+    this.api.postSellData(this.res).subscribe({
+      next:(res)=>{
+        alert("Property Has Been Selled Sucessfully!")
+      },error:()=>{
+        alert("error while Selling property!")
+      }
+    })
+  }
+
 
 /*onSale(){
     if(this.propertyForm.valid){
@@ -129,19 +152,6 @@ export class PropertyDetailComponent implements OnInit {
 
     })
   }*/
-
-  onSale(){
-    this.api.postSellData(this.res).subscribe({
-      next:(res)=>{
-        alert("Property Has Been Selled Sucessfully!")
-      },error:()=>{
-        alert("error while Selling property!")
-      }
-    })
-  }
-
-
-
 
 
 }
