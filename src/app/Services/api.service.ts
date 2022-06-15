@@ -124,11 +124,11 @@ export class ApiService {
     return this.http.post<any>("http://127.0.0.1:8000/Home/sell/", data);
   }
   postCalcPayment(data: any){
-    return this.http.post<any>("http://127.0.0.1:8000/EdenApp/calc/",data);
+    return this.http.post<any>("http://127.0.0.1:8000/Home/calc/",data);
   }
 
   getCalcPayment(){
-    return this.http.get("http://127.0.0.1:8000/EdenApp/calc/");
+    return this.http.get("http://127.0.0.1:8000/Home/calcResults/");
   }
 
   getPredictionResult()
