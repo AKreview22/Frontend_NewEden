@@ -9,7 +9,6 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { HomeComponent } from './Pages/home/home.component';
 import { NavbarComponent } from './SharedPaged/navbar/navbar.component';
 import { FooterComponent } from './SharedPaged/footer/footer.component';
-import { AnalyzeComponent } from './Pages/analyze/analyze.component';
 
 
 import { PropertyCardComponent } from './Pages/property/property-card/property-card/property-card.component';
@@ -29,7 +28,6 @@ import { NgxPaginationModule } from 'ngx-pagination';
 
 
 import { FilterPipe } from './Pipe/filter.pipe';
-import { SortPipe } from './Pipe/sort.pipe';
 
 import {MatSliderModule} from '@angular/material/slider';
 
@@ -37,6 +35,8 @@ import {MatRadioModule} from '@angular/material/radio';
 import { MatGridListModule } from '@angular/material/grid-list'
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import {MatListModule} from '@angular/material/list';
+
 
 import {MatTabsModule} from '@angular/material/tabs';
 
@@ -81,7 +81,6 @@ import { ConstraintsTableComponent } from './constraints-table/constraints-table
     AppComponent,
     NavbarComponent,
     FooterComponent,
-    AnalyzeComponent,
     ManageEmployeeComponent,
     ManageConstraintsComponent,
     ManagePropertiesComponent,
@@ -91,11 +90,10 @@ import { ConstraintsTableComponent } from './constraints-table/constraints-table
     PropertyListComponent,
     PropertyDetailComponent,
     FilterPipe,
-    SortPipe,
     SellDetailsComponent,
     PricePredictionComponent,
     PredictionResultsComponent,
-     EmployeeDialogComponent,
+    EmployeeDialogComponent,
     ManagePropertiesComponent,
     PropertiesDialogComponent,
     ManageEmployeeComponent,
@@ -149,7 +147,7 @@ import { ConstraintsTableComponent } from './constraints-table/constraints-table
     NgbModule,
     FlexLayoutModule,
     MatSidenavModule,
-
+    MatListModule
   ],
   providers: [
     PricepredictionService,

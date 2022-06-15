@@ -4,50 +4,57 @@
 
       <table mat-table [dataSource]="dataSource" matSort>
 
-        <ng-container matColumnDef="averagePrice">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Average Price </th>
-          <td mat-cell *matCellDef="let row" style="padding-left :10" style="padding-right:10"> {{row.averagePrice}}
-          </td>
-        </ng-container>
-
-        <ng-container matColumnDef="housesQuantity">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Houses Quantity </th>
-          <td mat-cell *matCellDef="let row" style="padding-left :10" style="padding-right:10"> {{row.housesQuantity}}
-          </td>
-        </ng-container>
-
-        <ng-container matColumnDef="maximumPrice">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Maximum Price </th>
-          <td mat-cell *matCellDef="let row"> {{row.maximumPrice}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="medianOfPrice">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Median Of Price </th>
-          <td mat-cell *matCellDef="let row"> {{row.medianOfPrice}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="modeOfPrice">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> modeOfPrice </th>
-          <td mat-cell *matCellDef="let row"> {{row.modeOfPrice}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="priceRange">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Price Range </th>
-          <td mat-cell *matCellDef="let row"> {{row.priceRange}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="minimumPrice">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> minimumPrice </th>
-          <td mat-cell *matCellDef="let row"> {{row.minimumPrice}} </td>
-        </ng-container>
-
         <ng-container matColumnDef="predictedPrice">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Predicted Price </th>
-          <td mat-cell *matCellDef="let row"> {{row.predictedPrice}} </td>
+          <td mat-cell *matCellDef="let row" style="padding-left :10" style="padding-right:10"> {{row.predictedPrice}}
+          </td>
         </ng-container>
 
-      </table>
+        <ng-container matColumnDef="numberOfElements">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Houses Quantity </th>
+          <td mat-cell *matCellDef="let row" style="padding-left :10" style="padding-right:10"> {{row.numberOfElements}}
+          </td>
+        </ng-container>
 
+        <ng-container matColumnDef="highestPrice">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Maximum Price </th>
+          <td mat-cell *matCellDef="let row"> {{row.highestPrice}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="lowestPrice">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Minimum Price </th>
+          <td mat-cell *matCellDef="let row"> {{row.lowestPrice}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="rangePrice">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Price Range</th>
+          <td mat-cell *matCellDef="let row"> {{row.rangePrice}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="averagePrice">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Averrage price</th>
+          <td mat-cell *matCellDef="let row"> {{row.averagePrice}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="modePrice">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Mode of Prices </th>
+          <td mat-cell *matCellDef="let row"> {{row.modePrice}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="medianPrice">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Median of prices </th>
+          <td mat-cell *matCellDef="let row"> {{row.medianPrice}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+        </tr>
+
+      </table>
+      <span class="example-spacer"></span>
+      <button mat-raised-button color="primary" (click)="openDialog()" style=" width: 10%;">
+        Predict
+      </button>
     </div>
   </div>
 </div>

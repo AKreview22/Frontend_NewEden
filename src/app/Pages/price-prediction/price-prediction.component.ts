@@ -33,7 +33,6 @@ export class PricePredictionComponent implements OnInit {
 }
 
 predict(){
-  if(!this.editData){
    if(this.predictionForm.valid){
      this.api.postPredictionResults(this.predictionForm.value)
      .subscribe({
@@ -48,7 +47,6 @@ predict(){
    }
   }
  }
-}
 
 
 
@@ -79,30 +77,4 @@ predict(){
 
   ViewResult(){
     this.router.navigateByUrl("prediction-result")
-  }/*
-
------------------------------------------------------
-
-
-
-    //console.log(this.editData);
-  }
-  addEmp(){
-   if(!this.editData){
-    if(this.empForm.valid){
-      this.api.postEmp(this.empForm.value)
-      .subscribe({
-        next:(res)=>{
-          console.log(res);
-          this.empForm.reset();
-          this.dialog.close("Saved");
-        },
-        error:()=>{
-          alert("Error while adding employee");
-        }
-      })
-    }
-   }else{
-     this.updateEmp();
-   }
-  }
+  }/*/

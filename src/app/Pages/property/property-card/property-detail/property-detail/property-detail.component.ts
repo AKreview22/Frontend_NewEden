@@ -1,9 +1,11 @@
+import { SellDetailsComponent } from './../../../../sell-details/sell-details.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, ElementRef, OnInit } from '@angular/core';
 import { Property } from 'src/app/Pages/property';
 import { NgxGalleryAnimation, NgxGalleryImage, NgxGalleryOptions } from '@kolkov/ngx-gallery';
 import { ApiService } from 'src/app/Services/api.service';
 import { FormGroup , FormBuilder , Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-property-detail',
@@ -19,12 +21,12 @@ export class PropertyDetailComponent implements OnInit {
 
 
   yearsList = ["3 Years", "5 Years" , "7 Years" , "10 Years"];
-  propertyForm !: FormGroup;
+  res : Array<any>[];
 
 
   constructor(private route:ActivatedRoute, private router:Router,
               private el:ElementRef, private api : ApiService,
-              private formBuilder : FormBuilder) {}
+              private formBuilder : FormBuilder,private dialog:MatDialog) {}
 
   imageChange(){
     var src:any = this.el.nativeElement.src;
@@ -81,45 +83,32 @@ export class PropertyDetailComponent implements OnInit {
         big: '../../../assets/h3.jpg'
       }
     ];
-    this.propertyForm = this.formBuilder.group({
-      deposit : ['',Validators.required],
-      years: ['',Validators.required],
-      monthly: ['',Validators.required],
-      overallPrice: ['',Validators.required],
-      deliverDate: ['',Validators.required],
-      equalInstall: [false]
+
+
+
+  }
+
+
+  openDialog(){
+    this.dialog.open(SellDetailsComponent,{
+      width: '30%'
+    }).afterClosed().subscribe(val=>{
+      if(val === 'Saved'){
+        this.getCalc();
+      }
     })
   }
 
 
-  //BACK TO PREVIOUS PAGE FUNCTION
-  onBack(){
-    this.router.navigate(['/']);
-  }
-
-  //NEXT PAGE FUNCTION
-  onSelectNext(){
-    this.propertyId+=1;
-    this.router.navigate(['property-detail' , this.propertyId]);
-  }
-
-
-  onCalc(){
-    if(this.propertyForm.valid){
-      this.api.postCalcPayment(this.propertyForm.value).subscribe({
-        next:(res)=>{
-          console.log(res);
-        },
-        error:()=>{
-          alert("Error Happened While Selling the Property")
-        }
-        
-      })
-      
+  getCalc(){
+  this.api.getCalcPayment().subscribe({
+    next:(res) => {
+      this.res = res;
     }
+  })
 }
-  
-  onSale(){
+
+/*onSale(){
     if(this.propertyForm.valid){
       this.api.postSellData(this.propertyForm.value).subscribe({
         next:(res)=>{
@@ -132,7 +121,26 @@ export class PropertyDetailComponent implements OnInit {
         }
       })
     }
+    this.api.postSellData(this.res).subscribe({
+      next:(res)=>{
+      alert("Property Has Been Selled Successfully!");
+      },error:()=>{
+        alert("Error Happened!")
+      }
+
+    })
+  }*/
+
+  onSale(){
+    this.api.postSellData(this.res).subscribe({
+      next:(res)=>{
+        alert("Property Has Been Selled Sucessfully!")
+      },error:()=>{
+        alert("error while Selling property!")
+      }
+    })
   }
+
 
 
 
