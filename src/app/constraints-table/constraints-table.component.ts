@@ -38,7 +38,7 @@ export class ConstraintsTableComponent implements OnInit {
         }
       })
   }
- 
+
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
@@ -49,6 +49,6 @@ export class ConstraintsTableComponent implements OnInit {
   }
 
   addConst(){
-    this.router.navigateByUrl("constraints")
+    this.router.navigateByUrl("/admin-dashboard/constraints")
   }
 }
