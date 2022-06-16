@@ -1,18 +1,19 @@
   <mat-toolbar fxLayout="row" color="primary" *ngIf="displayMenu">
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-      <mat-icon>supervised_user_circle</mat-icon>
+    <button mat-icon-button>
+      <mat-icon routerLink="">home</mat-icon>
     </button>
     <span fxFlex>New Eden</span>
     <span class="example-spacer"></span>
-    <a *ngIf="displayHomePage && loggedIn()" mat-button fxHide.xs routerLink="">Home</a>
-    <a *ngIf="displayDashboards && loggedIn()" mat-button fxHide.xs routerLink="/admin-dashboard/">Analyze</a>
-    <a *ngIf="displayManageEmpPages && loggedIn()" mat-button fxHide.xs routerLink="/manage-employee">Manage Employees</a>
-    <a *ngIf="displayManageHomePage && loggedIn()" mat-button fxHide.xs routerLink="/manage-constraints">Manage Constraints</a>
-    <a *ngIf="displayManageHomePage && loggedIn()" mat-button fxHide.xs routerLink="/manage-properties">Manage Homes</a>
-    <a *ngIf="!loggedIn()" mat-button fxHide.xs routerLink="/login">Login</a>
-    <a *ngIf="loggedIn()" (click)="onLogout()" mat-button fxHide.xs routerLink="/login">Logout</a>
+    <button *ngIf="displayHomePage && loggedIn()" mat-button fxHide.xs routerLink="">Home</button>
+    <button *ngIf="displayDashboards && loggedIn()" mat-button fxHide.xs routerLink="/admin-dashboard/">Analyze</button>
+    <button *ngIf="displayManageEmpPages && loggedIn()" mat-button fxHide.xs routerLink="/manage-employee">Manage Employees</button>
+    <button *ngIf="displayManageHomePage && loggedIn()" mat-button fxHide.xs routerLink="/manage-constraints">Manage Constraints</button>
+    <button *ngIf="displayManageHomePage && loggedIn()" mat-button fxHide.xs routerLink="/manage-properties">Manage Homes</button>
+    <button *ngIf="!loggedIn()" mat-button fxHide.xs routerLink="/login">Login</button>
+    <button *ngIf="loggedIn()" (click)="onLogout()" mat-button fxHide.xs routerLink="/login">Logout</button>
+
     <button mat-icon-button [matMenuTriggerFor]="dropMenu" fxHide fxShow.xs>
-      <mat-icon>more_vert</mat-icon>
+      <mat-icon>menu</mat-icon>
     </button>
     <mat-menu #dropMenu="matMenu">
       <ng-container>
