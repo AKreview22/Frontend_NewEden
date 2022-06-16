@@ -4,46 +4,46 @@
 
       <table mat-table [dataSource]="dataSource" matSort>
 
-        <ng-container matColumnDef="predictedPrice">
+        <ng-container matColumnDef="predicted_price">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Predicted Price </th>
-          <td mat-cell *matCellDef="let row" style="padding-left :10" style="padding-right:10"> {{row.predictedPrice}}
+          <td mat-cell *matCellDef="let row" style="padding-left :10" style="padding-right:10"> {{row.predicted_price}}
           </td>
         </ng-container>
 
-        <ng-container matColumnDef="numberOfElements">
+        <ng-container matColumnDef="houses_quantity">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Houses Quantity </th>
-          <td mat-cell *matCellDef="let row" style="padding-left :10" style="padding-right:10"> {{row.numberOfElements}}
+          <td mat-cell *matCellDef="let row" style="padding-left :10" style="padding-right:10"> {{row.houses_quantity}}
           </td>
         </ng-container>
 
-        <ng-container matColumnDef="highestPrice">
+        <ng-container matColumnDef="maximum_price">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Maximum Price </th>
-          <td mat-cell *matCellDef="let row"> {{row.highestPrice}} </td>
+          <td mat-cell *matCellDef="let row"> {{row.maximum_price}} </td>
         </ng-container>
 
-        <ng-container matColumnDef="lowestPrice">
+        <ng-container matColumnDef="minimum_price">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Minimum Price </th>
-          <td mat-cell *matCellDef="let row"> {{row.lowestPrice}} </td>
+          <td mat-cell *matCellDef="let row"> {{row.minimum_price}} </td>
         </ng-container>
 
-        <ng-container matColumnDef="rangePrice">
+        <ng-container matColumnDef="price_range">
           <th mat-header-cell *matHeaderCellDef mat-sort-header>Price Range</th>
-          <td mat-cell *matCellDef="let row"> {{row.rangePrice}} </td>
+          <td mat-cell *matCellDef="let row"> {{row.price_range}} </td>
         </ng-container>
 
-        <ng-container matColumnDef="averagePrice">
+        <ng-container matColumnDef="average_price">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Averrage price</th>
-          <td mat-cell *matCellDef="let row"> {{row.averagePrice}} </td>
+          <td mat-cell *matCellDef="let row"> {{row.average_price}} </td>
         </ng-container>
 
-        <ng-container matColumnDef="modePrice">
+        <ng-container matColumnDef="mode_of_prices">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Mode of Prices </th>
-          <td mat-cell *matCellDef="let row"> {{row.modePrice}} </td>
+          <td mat-cell *matCellDef="let row"> {{row.mode_of_prices}} </td>
         </ng-container>
 
-        <ng-container matColumnDef="medianPrice">
+        <ng-container matColumnDef="median_of_prices">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Median of prices </th>
-          <td mat-cell *matCellDef="let row"> {{row.medianPrice}} </td>
+          <td mat-cell *matCellDef="let row"> {{row.median_of_prices}} </td>
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -52,9 +52,7 @@
 
       </table>
       <span class="example-spacer"></span>
-      <button mat-raised-button color="primary" (click)="openDialog()" style=" width: 10%;">
-        Predict
-      </button>
     </div>
   </div>
 </div>
+

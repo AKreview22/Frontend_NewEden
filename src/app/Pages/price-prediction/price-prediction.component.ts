@@ -17,7 +17,7 @@ export class PricePredictionComponent implements OnInit {
 
   predictionForm !:FormGroup;
   actionBtn : string="Predict";
-  constructor(private formBuilder: FormBuilder,private api:ApiService,@Inject(MAT_DIALOG_DATA) public editData :any,private dialog:MatDialogRef<PredictionResultsComponent>) { }
+  constructor(private formBuilder: FormBuilder,private router:Router,private api:ApiService) { }
 
   ngOnInit(): void {
     this.predictionForm=this.formBuilder.group({
@@ -38,10 +38,10 @@ predict(){
      .subscribe({
        next:(res)=>{
          console.log(res);
-         this.dialog.close("Predicted Sucessfully!");
+          this.router.navigateByUrl('/admin-dashboard/predictionResults');
        },
        error:()=>{
-         alert("Error while adding employee");
+         alert("Error while predicting");
        }
      })
    }

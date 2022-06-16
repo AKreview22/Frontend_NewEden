@@ -41,13 +41,13 @@ export class ApiService {
   readonly APIUrl = "http://127.0.0.1:8000";
   readonly PhotoUrl = "http://127.0.0.1:8000/media/";
   private pieUrl = 'http://127.0.0.1:8000/EdenApp/pieChart/';
-   private lineUrl = 'http://127.0.0.1:8000/EdenApp/lineChart/';
-   private barUrlApart ='http://127.0.0.1:8000/EdenApp/barChartApart/';
-   private barUrlVilla ='http://127.0.0.1:8000/EdenApp/barChartVilla/';
-   private barUrlTown ='http://127.0.0.1:8000/EdenApp/barChartTown/';
-   private barUrlTwin ='http://127.0.0.1:8000/EdenApp/barChartTwin/';
-   private polarUrl ='http://127.0.0.1:8000/EdenApp/polarChart/';
-  private baseUrl = 'http://127.0.0.1:8000/EdenApp/pieChart/';
+  private lineUrl = 'http://127.0.0.1:8000/EdenApp/lineChart/';
+  private barUrlApart ='http://127.0.0.1:8000/EdenApp/barChartApart/';
+  private barUrlVilla ='http://127.0.0.1:8000/EdenApp/barChartVilla/';
+  private barUrlTown ='http://127.0.0.1:8000/EdenApp/barChartTown/';
+  private barUrlTwin ='http://127.0.0.1:8000/EdenApp/barChartTwin/';
+  private doughnutUrl ='http://127.0.0.1:8000/EdenApp/doughnutChart/';
+
 
   postEmp(data: any) {
     return this.http.post("http://127.0.0.1:8000/Home/register/", data);
@@ -83,12 +83,6 @@ export class ApiService {
   getCons() {
     return this.http.get<any>("http://127.0.0.1:8000/Home/viewConstraints/");
   }
-  putCons(data: any, id: number) {
-    return this.http.put<any>("http://localhost:3000/Constraints/" + id, data);
-  }
-  deleteCons(id: number) {
-    return this.http.delete<any>("http://localhost:3000/Constraints/" + id);
-  }
   postQuer(data: any) {
     return this.http.post<any>("http://localhost:3000/queries/", data);
   }
@@ -98,15 +92,20 @@ export class ApiService {
   getQuer() {
     return this.http.get<any>("http://localhost:3000/queries/");
   }
-  postFilterQuer(data: any) {
-    return this.http.post<any>("http://localhost:3000/filterqueries/", data);
+
+
+  postSalesQuer(data: any) {
+    return this.http.post<any>("http://127.0.0.1:8000/EdenApp/salesQuery/", data);
   }
-  putFilterQuer(data: any, id: number) {
-    return this.http.put<any>("http://localhost:3000/filterqueries" + id, data);
+
+  getSalesQuerDetails() {
+    return this.http.get<any>("http://127.0.0.1:8000/EdenApp/salesQueryDetails/");
   }
-  getfilterQuer() {
-    return this.http.get<any>("http://localhost:3000/filterqueries/");
+getSalesQuerSum() {
+    return this.http.get<any>("http://127.0.0.1:8000/EdenApp/salesQuerySum/");
   }
+
+
 
   getdatset() {
     return this.http.get<any>("http://localhost:3000/dataset");
@@ -117,14 +116,14 @@ export class ApiService {
   getCount() {
     return this.http.get<any>("http://localhost:3000/count");
   }
-  getSum() {
-    return this.http.get<any>("http://localhost:3000/sum");
-  }
+
   postSellData(data: any) {
     return this.http.post<any>("http://127.0.0.1:8000/Home/sell/", data);
   }
-  postCalcPayment(data: any, id: number){
-    return this.http.put<any>("http://127.0.0.1:8000/Home/calc/" + id, data);
+
+
+  postCalcPayment(data: any){
+     return this.http.post<any>("http://127.0.0.1:8000/Home/calc/",data);
   }
 
   getCalcPayment(){
@@ -225,7 +224,7 @@ export class ApiService {
    }
 
    doughnutChartData() {
-     const url = `${this.polarUrl}`;
+     const url = `${this.doughnutUrl}`;
      return this.http
      .get(url, httpOptions)
      .toPromise()

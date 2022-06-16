@@ -49,6 +49,6 @@ export class ConstraintsTableComponent implements OnInit {
   }
 
   addConst(){
-    this.router.navigateByUrl("/admin-dashboard/constraints")
+    this.router.navigateByUrl("constraints")
   }
 }

@@ -32,9 +32,10 @@ import { MatSelectModule } from '@angular/material/select';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import { FilterQueryComponent } from './dashboard/components/filter-query/filter-query.component';
-import { FilterQueryResultComponent } from './dashboard/components/filter-query-result/filter-query-result.component';
-
+import { SalesQueryComponent } from './dashboard/components/sales-query/sales-query.component';
+import { SalesQueryResultComponent } from './dashboard/components/sales-query-result/sales-query-result.component';
+import { PricePredictionComponent } from '../Pages/price-prediction/price-prediction.component';
+import { PredictionResultsComponent } from '../Pages/prediction-results/prediction-results.component';
 const routes:Routes=[
   {path:"",component:DashboardComponent,
   children:[
@@ -42,8 +43,10 @@ const routes:Routes=[
     {path:'minicards',component:MiniCardComponent},
     {path:'query',component:QueryDialogComponent},
     {path:'result',component:QueryResultComponent},
-    {path:'filterQuery',component:FilterQueryComponent},
-    {path:'filterResult',component:FilterQueryResultComponent}
+    {path:'salesQuery',component:SalesQueryComponent},
+    {path:'salesResult',component:SalesQueryResultComponent},
+    {path:'pricePrediction',component:PricePredictionComponent},
+    {path:'predictionResults',component:PredictionResultsComponent},
   ]
 }
 ]
@@ -61,8 +64,8 @@ const routes:Routes=[
     DoughnutChartComponent,
     QueryDialogComponent,
     QueryResultComponent,
-    FilterQueryComponent,
-    FilterQueryResultComponent,
+    SalesQueryComponent,
+    SalesQueryResultComponent,
   ],
   imports: [
     CommonModule,

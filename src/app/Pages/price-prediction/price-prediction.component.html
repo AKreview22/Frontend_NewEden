@@ -1,40 +1,37 @@
 
-<form [formGroup]="predictionForm">
-  <mat-card>
-      <mat-card-header style="font-weight: bold; font-size: large; padding: 5px;">
-        Predict your ideal Property
-      </mat-card-header>
-      <mat-card-content>
-          <div>
-                  <label>Type</label>
-                  <mat-form-field appearance="outline">
-                    <input formControlName="type_name" matInput  placeholder="Type">
+<form [formGroup]="predictionForm" style="width: 400px; margin-left: 40%; margin-top: 20px;">
+  <mat-card style="background-color: #3F51B5;">
+      <mat-card-content >
+          <div  >
+                 <b> <label style="font-size: 20px; color:aliceblue;" >Type</label></b>
+                  <mat-form-field style="background-color: aliceblue; height: 55px;" appearance="outline">
+                    <input  formControlName="type_name" matInput  placeholder="Type">
                  </mat-form-field>
 
-                  <label>Location</label>
-              <mat-form-field appearance="outline">
+                  <b><label style="font-size: 20px; color:aliceblue;margin-top: 25px;" >Location</label></b>
+              <mat-form-field style="background-color: aliceblue; height: 55px; " appearance="outline">
                   <input formControlName="location_name" matInput  placeholder="Location">
               </mat-form-field>
 
-                      <label>Area</label>
-                  <mat-form-field appearance="outline">
+                      <b><label style="font-size: 20px; color:aliceblue; margin-top: 25px;" >Area</label></b>
+                  <mat-form-field  style="background-color: aliceblue; height: 55px;" appearance="outline">
                       <input formControlName="area_sqm" matInput type="number" placeholder="Area">
                   </mat-form-field>
 
-                  <label>Bathrooms</label>
-                  <mat-form-field appearance="outline">
+                  <b><label style="font-size: 20px; color:aliceblue;margin-top: 25px;">Bathrooms</label></b>
+                  <mat-form-field  style="background-color: aliceblue; height: 55px;" appearance="outline">
                       <input formControlName="bathrooms" matInput type="number" placeholder="Bathrooms">
                   </mat-form-field>
 
-                      <label>Bedrooms</label>
-                  <mat-form-field appearance="outline">
+                   <b> <label style="font-size: 20px; color:aliceblue;margin-top: 25px;">Bedrooms</label></b>
+                  <mat-form-field  style="background-color: aliceblue; height: 55px;" appearance="outline">
                       <input formControlName="bedrooms" matInput type="number" placeholder="Bedrooms">
                   </mat-form-field>
-
               </div>
       </mat-card-content>
+
       <mat-card-actions>
-        <button mat-raised-button color="primary" (click)="predict()" [disabled]="predictionForm.invalid">Predict</button>
+        <button mat-raised-button  (click)="predict()" [disabled]="predictionForm.invalid">Predict</button>
       </mat-card-actions>
   </mat-card>
 </form>

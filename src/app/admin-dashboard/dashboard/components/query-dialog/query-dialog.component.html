@@ -47,7 +47,7 @@
         <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
         <mat-datepicker #picker2></mat-datepicker>
       </mat-form-field>
-      
+
         <mat-checkbox formControlName="Garden">Garden</mat-checkbox><br>
         <mat-checkbox formControlName="Sold">Sold</mat-checkbox><br>
         <mat-checkbox formControlName="Finished">Finished</mat-checkbox><br>
@@ -61,7 +61,7 @@
           </mat-form-field>
    </form>
 </div>
-<div mat-dialog-action [align]="'end'">
+<div mat-dialog-action >
   <!--  <button mat-raised-button color="warn" mat-dialog-close >Close</button> -->
     <button style="margin-left: 8px;"mat-raised-button color="primary" (click)="submit()">Submit</button>
 </div>

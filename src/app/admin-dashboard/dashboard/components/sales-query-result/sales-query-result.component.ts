@@ -4,17 +4,16 @@ import { ApiService } from 'src/app/Services/api.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { FilterQueryComponent } from '../filter-query/filter-query.component';
+import { SalesQueryComponent } from '../sales-query/sales-query.component';
 
 @Component({
-  selector: 'app-filter-query-result',
-  templateUrl: './filter-query-result.component.html',
-  styleUrls: ['./filter-query-result.component.scss']
+  selector: 'app-sales-query-result',
+  templateUrl: './sales-query-result.component.html',
+  styleUrls: ['./sales-query-result.component.scss']
 })
-export class FilterQueryResultComponent implements OnInit {
-  displayedColumns: string[] = [ 'sellerID','count','sum'];
+export class SalesQueryResultComponent implements OnInit {
+  displayedColumns: string[] = [ 'sellerID_id','count','sum'];
   displayedColumns1: string[] = ['totalSum'];
-
   dataSource1!: MatTableDataSource<any>;
   dataSource2!: MatTableDataSource<any>;
 
@@ -27,9 +26,11 @@ export class FilterQueryResultComponent implements OnInit {
   ngOnInit(): void {
     this.getResult();
     this.getSum();
+
+
   }
   openDialog() {
-    this.dialog.open(FilterQueryComponent, {
+    this.dialog.open(SalesQueryComponent, {
       width: '30%'
     })/**.afterClosed().subscribe(val=>{
       if(val === 'Saved'){
@@ -38,7 +39,7 @@ export class FilterQueryResultComponent implements OnInit {
     })**/
   }
   getResult() {
-    this.api.getfilterQuer()
+    this.api.getSalesQuerDetails()
       .subscribe({
         next: (res) => {
           console.log(res)
@@ -52,7 +53,7 @@ export class FilterQueryResultComponent implements OnInit {
       })
   }
   getSum(){
-    this.api.getSum()
+    this.api.getSalesQuerSum()
     .subscribe({
       next:(res)=>{
         console.log(res)

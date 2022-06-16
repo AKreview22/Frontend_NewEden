@@ -4,6 +4,7 @@ import { ApiService } from 'src/app/Services/api.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { PricePredictionComponent } from '../price-prediction/price-prediction.component';
 import { MatDialog , MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { Router } from '@angular/router';
 
 
 
@@ -15,25 +16,16 @@ import { MatDialog , MAT_DIALOG_DATA} from '@angular/material/dialog';
 })
 export class PredictionResultsComponent implements OnInit {
 
-  displayedColumns: string[] = ['predictedPrice','numberOfElements', 'highestPrice' , 'lowestPrice' , 'rangePrice','averagePrice','modePrice','medianPrice'];
+  displayedColumns: string[] = ['predicted_price','houses_quantity', 'maximum_price' , 'minimum_price' , 'price_range','average_price','mode_of_prices','median_of_prices'];
   dataSource!: MatTableDataSource<any>;
 
 
-  constructor(private dialog:MatDialog,private api:ApiService) { }
+  constructor(private dialog:MatDialog,private api:ApiService,private router:Router) { }
 
   ngOnInit(): void {
     this.getPredictionResult();
   }
 
-  openDialog(){
-    this.dialog.open(PricePredictionComponent,{
-      width: '30%'
-    }).afterClosed().subscribe(val=>{
-      if(val === 'Predict'){
-        this.getPredictionResult();
-      }
-    })
-  }
   getPredictionResult(){
     this.api.getPredictionResult()
     .subscribe({

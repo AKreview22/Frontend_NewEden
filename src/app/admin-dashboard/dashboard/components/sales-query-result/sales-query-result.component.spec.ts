@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FilterQueryResultComponent } from './filter-query-result.component';
+import { SalesQueryResultComponent } from './sales-query-result.component';
 
-describe('FilterQueryResultComponent', () => {
-  let component: FilterQueryResultComponent;
-  let fixture: ComponentFixture<FilterQueryResultComponent>;
+describe('SalesQueryResultComponent', () => {
+  let component: SalesQueryResultComponent;
+  let fixture: ComponentFixture<SalesQueryResultComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FilterQueryResultComponent ]
+      declarations: [ SalesQueryResultComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FilterQueryResultComponent);
+    fixture = TestBed.createComponent(SalesQueryResultComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
