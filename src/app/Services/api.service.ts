@@ -83,14 +83,16 @@ export class ApiService {
   getCons() {
     return this.http.get<any>("http://127.0.0.1:8000/Home/viewConstraints/");
   }
+
+
   postQuer(data: any) {
-    return this.http.post<any>("http://localhost:3000/queries/", data);
-  }
-  putQuer(data: any, id: number) {
-    return this.http.put<any>("http://localhost:3000/queries" + id, data);
+    return this.http.post<any>("http://localhost:8000/EdenApp/filterQuery/", data);
   }
   getQuer() {
-    return this.http.get<any>("http://localhost:3000/queries/");
+    return this.http.get<any>("http://localhost:8000/EdenApp/filterQueryDetails/");
+  }
+ getCount() {
+    return this.http.get<any>("http://localhost:8000/EdenApp/filterQueryCount/");
   }
 
 
@@ -113,9 +115,7 @@ getSalesQuerSum() {
   getData() {
     return this.http.get<any>("http://localhost:3000/data");
   }
-  getCount() {
-    return this.http.get<any>("http://localhost:3000/count");
-  }
+
 
   postSellData(data: any) {
     return this.http.post<any>("http://127.0.0.1:8000/Home/sell/", data);

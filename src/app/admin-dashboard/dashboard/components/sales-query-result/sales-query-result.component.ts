@@ -12,7 +12,7 @@ import { SalesQueryComponent } from '../sales-query/sales-query.component';
   styleUrls: ['./sales-query-result.component.scss']
 })
 export class SalesQueryResultComponent implements OnInit {
-  displayedColumns: string[] = [ 'sellerID_id','count','sum'];
+  displayedColumns: string[] = [ 'sellerID_id_sales','count','sum'];
   displayedColumns1: string[] = ['totalSum'];
   dataSource1!: MatTableDataSource<any>;
   dataSource2!: MatTableDataSource<any>;

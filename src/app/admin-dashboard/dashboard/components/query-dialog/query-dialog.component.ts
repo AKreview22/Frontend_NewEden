@@ -10,6 +10,7 @@ import { ApiService } from 'src/app/Services/api.service';
 })
 export class QueryDialogComponent implements OnInit {
 
+
   queryForm !: FormGroup;
 
   constructor(private formBuilder:FormBuilder,private api:ApiService,private router:Router) { }
@@ -17,20 +18,21 @@ export class QueryDialogComponent implements OnInit {
   ngOnInit(): void {
     this.queryForm=this.formBuilder.group({
       count:[''],
-      Level:['All'],
       Type:['All'],
-      sellerID:['All'],
       minPrice:['All'],
       maxPrice:['All'],
       minArea:['All'],
       maxArea:['All'],
+      Level:['All'],
+      Finished:['All'],
+      Garden:['All'],
+      Sold:['All'],
+      sellerID_id_filter:['All'],
       startDate:['All'],
       EndDate:['All'],
-      Garden:[false],
-      Sold:[false],
-      Finished:[false],
       Bathrooms:['All'],
       Bedrooms:['All'],
+
       PriceinEGP:['All'],
       Areainsqm:['All'],
       id:['']
@@ -41,8 +43,8 @@ export class QueryDialogComponent implements OnInit {
      this.api.postQuer(this.queryForm.value)
      .subscribe({
        next:(res)=>{
-         alert("Query submitted successfully");
-         this.router.navigateByUrl('result')
+        //  alert("Query submitted successfully");
+         this.router.navigateByUrl('/admin-dashboard/result')
        },
        error:()=>{
          alert("Error while submitting the query");

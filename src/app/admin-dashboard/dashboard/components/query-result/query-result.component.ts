@@ -13,7 +13,7 @@ import { MatTableDataSource } from '@angular/material/table';
 })
 export class QueryResultComponent implements OnInit {
 
-  displayedColumns: string[] = ['Level', 'Type', 'sellerID', 'Price', 'Area', 'Date', 'Garden', 'Sold', 'Finished', 'Bathrooms', 'Bedrooms'];
+  displayedColumns: string[] = ['Level', 'Type', 'sellerID_id_filter', 'Price', 'Area', 'Date', 'Garden', 'Sold', 'Finished', 'Bathrooms', 'Bedrooms'];
   displayedColumns1: string[] = ['count']
   //displayedColumns: string[] = [ 'Level', 'Type', 'sellerID','minPrice','maxPrice','minArea','maxArea','startDate','EndDate','Garden','Sold','Finished','Bathrooms','Bedrooms'];
   dataSource1!: MatTableDataSource<any>;
