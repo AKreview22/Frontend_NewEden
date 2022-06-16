@@ -1,6 +1,6 @@
 import { Component, DoCheck, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from 'src/app/services/auth.service';
+import { AuthService } from 'src/app/Services/auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -26,11 +26,12 @@ export class NavbarComponent implements OnInit, DoCheck {
     }
   }
   loggedIn() {
-    //return (this.service.isLoggedIn());
-    return localStorage.getItem('token');
+    return (this.service.isLoggedIn());
+    //return localStorage.getItem('token');
   }
   onLogout() {
     localStorage.removeItem('token');
+    this.router.navigateByUrl[('login')];
   }
   ngOnInit(): void {
     this.service.updatedMenu.subscribe(res => {
