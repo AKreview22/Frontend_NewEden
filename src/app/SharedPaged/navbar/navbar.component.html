@@ -1,36 +1,28 @@
-<!--Navbar-->
-<mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark indigo">
-
-  <!-- Navbar brand -->
-  <mdb-navbar-brand><a class="navbar-brand" href="#">New Eden</a></mdb-navbar-brand>
-
-  <!-- Collapsible content -->
-  <links>
-
-    <!-- Links -->
-    <ul class="navbar-nav  ms-auto">
-          <li class="nav-item">
-            <a class="nav-link waves-light" mdbWavesEffect aria-current="page" routerLink=""  routerLinkActive="active-link"  [routerLinkActiveOptions]="{exact:true}">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link waves-light" mdbWavesEffect routerLink="admin-dashboard"  routerLinkActive="active-link">Analyze</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link waves-light" mdbWavesEffect routerLink="manage-employee"  routerLinkActive="active-link">Manage Employee</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link waves-light" mdbWavesEffect routerLink="constTable"  routerLinkActive="active-link">Manage Constraints</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link waves-light" mdbWavesEffect routerLink="manage-properties"  routerLinkActive="active-link">Manage Homes</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link waves-light" mdbWavesEffect routerLink="login"  routerLinkActive="active-link">Login</a>
-          </li>
-        </ul>
-    <!-- Links -->
-  </links>
-  <!-- Collapsible content -->
-
-</mdb-navbar>
-<!--/.Navbar-->
+  <mat-toolbar fxLayout="row" color="primary" *ngIf="displayMenu">
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+      <mat-icon>supervised_user_circle</mat-icon>
+    </button>
+    <span fxFlex>New Eden</span>
+    <span class="example-spacer"></span>
+    <a *ngIf="!loggedIn()" *ngIf="displayHomePage" mat-button fxHide.xs>Home</a>
+    <a *ngIf="!loggedIn()" *ngIf="displayDashboards" mat-button fxHide.xs routerLink="/admin-dashboard/">Analyze</a>
+    <a *ngIf="!loggedIn()" *ngIf="displayManageEmpPages" mat-button fxHide.xs routerLink="/employees">Manage Employees</a>
+    <a *ngIf="!loggedIn()" *ngIf="displayManagePages" mat-button fxHide.xs routerLink="/constraints">Manage Constraints</a>
+    <a *ngIf="!loggedIn()" *ngIf="displayManageHomePage" mat-button fxHide.xs routerLink="/properties">Manage Homes</a>
+    <a *ngIf="!loggedIn()" mat-button fxHide.xs routerLink="/login">Login</a>
+    <a *ngIf="loggedIn()" *ngIf="displayHomePage" mat-button fxHide.xs>Logout</a>
+    <button mat-icon-button [matMenuTriggerFor]="dropMenu" fxHide fxShow.xs>
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #dropMenu="matMenu">
+      <ng-container>
+        <a *ngIf="!loggedIn()" *ngIf="displayHomePage" mat-menu-item>Home</a>
+        <a *ngIf="!loggedIn()" *ngIf="displayDashboards" mat-menu-item routerLink="/admin-dashboard/">Analyze</a>
+        <a *ngIf="!loggedIn()" *ngIf="displayManageEmpPages" mat-menu-item routerLink="/employees">Manage Employees</a>
+        <a *ngIf="!loggedIn()" *ngIf="displayManagePages" mat-menu-item routerLink="/constraints">Manage Constraints</a>
+        <a *ngIf="!loggedIn()" *ngIf="displayManageHomePage" mat-menu-item routerLink="/properties">Manage Homes</a>
+        <a *ngIf="!loggedIn()" mat-menu-item routerLink="/login">Login</a>
+        <a *ngIf="loggedIn()" (click)="onLogout()" mat-menu-item>Logout</a>
+      </ng-container>
+    </mat-menu>
+  </mat-toolbar>

@@ -1,5 +1,7 @@
-import { PricepredictionService } from './Services/priceprediction.service';
 import { ApiService } from './Services/api.service';
+import { TokenInterceptorService } from './services/token-interceptor.service';
+import { AuthService } from './services/auth.service';
+import { GlobalErrorHandlerService } from './services/global-error-handler.service';
 
 
 
@@ -150,8 +152,9 @@ import { ConstraintsTableComponent } from './constraints-table/constraints-table
     MatListModule
   ],
   providers: [
-    PricepredictionService,
-    ApiService
+    ApiService,AuthService,
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptorService, multi: true },
+    { provide: ErrorHandler, useClass: GlobalErrorHandlerService }],
   ],
   bootstrap: [AppComponent],
   entryComponents: [SellDetailsComponent],
