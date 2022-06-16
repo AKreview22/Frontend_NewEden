@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from 'src/app/services/auth.service';
+import { AuthService } from 'src/app/Services/auth.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
-      username: ['', Validators.required],
+      id : ['', Validators.required],
       password: ['', Validators.required]
     })
   }
@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
         .subscribe((res) => {
           if (res != null) {
             this.responseData = res;
-            localStorage.setItem('token', this.responseData.jwtToken);
+            localStorage.setItem('token', this.responseData.jwt);
             this.service.updatedMenu.next();
             this.router.navigate(['']);
           }

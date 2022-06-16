@@ -7,6 +7,7 @@ import { ApiService } from 'src/app/Services/api.service';
 import { FormGroup , FormBuilder , Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
+import { AuthService } from 'src/app/Services/auth.service';
 
 
 @Component({
@@ -23,15 +24,17 @@ export class PropertyDetailComponent implements OnInit {
   property = new Property();
   galleryOptions: NgxGalleryOptions[];
   galleryImages: NgxGalleryImage[];
+  sellerID:Array<any>[];
 
 
   yearsList = ["3 Years", "5 Years" , "7 Years" , "10 Years"];
+  propertyForm !: FormGroup;
   res : Array<any>[];
 
 
   constructor(private route:ActivatedRoute, private router:Router,
               private el:ElementRef, private api : ApiService,
-              private formBuilder : FormBuilder,private dialog:MatDialog) {}
+              private formBuilder : FormBuilder,private dialog:MatDialog,private auth:AuthService) {}
 
   imageChange(){
     var src:any = this.el.nativeElement.src;
@@ -40,7 +43,9 @@ export class PropertyDetailComponent implements OnInit {
   }
 
   ngOnInit() {
+
     this.propertyId = +this.route.snapshot.params['id'];
+    console.log(this.propertyId)
 
     this.route.params.subscribe(
       (params) => {
@@ -89,7 +94,13 @@ export class PropertyDetailComponent implements OnInit {
       }
     ];
 
+    this.propertyForm = this.formBuilder.group({
+      deposit : ['',Validators.required],
+      years: ['',Validators.required]
+      })
 
+      this.sellerID=[this.auth.GetIDByToken(this.auth.getToken()),this.propertyId]
+      console.log(this.sellerID);
 
   }
 
@@ -105,6 +116,21 @@ export class PropertyDetailComponent implements OnInit {
   }
 
 
+  onCalc(){
+    if(this.propertyForm.valid){
+      this.api.postCalcPayment(this.propertyForm.value, this.propertyId).subscribe({
+        next:(res)=>{
+        console.log(this.propertyForm.value);
+        },
+        error:()=>{
+          alert("Error Happened While Selling the Property")
+        }
+
+      })
+
+    }
+  }
+
   getCalc(){
     this.api.getCalcPayment()
     .subscribe({
@@ -119,8 +145,9 @@ export class PropertyDetailComponent implements OnInit {
 
 
 
+
   onSale(){
-    this.api.postSellData(this.res).subscribe({
+    this.api.postSellData(this.sellerID).subscribe({
       next:(res)=>{
         alert("Property Has Been Selled Sucessfully!")
       },error:()=>{

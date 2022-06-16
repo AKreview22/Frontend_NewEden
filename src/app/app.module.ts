@@ -1,8 +1,8 @@
 import { ApiService } from './Services/api.service';
-import { TokenInterceptorService } from './services/token-interceptor.service';
-import { AuthService } from './services/auth.service';
-import { GlobalErrorHandlerService } from './services/global-error-handler.service';
-
+import { TokenInterceptorService } from './Services/token-interceptor.service';
+import { AuthService } from './Services/auth.service';
+import { GlobalErrorHandlerService } from './Services/global-error-handler.service';
+import { GlobalHttpInterceptorService } from './Services/global-http-interceptor.service';
 
 
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
@@ -46,7 +46,7 @@ import {MatTabsModule} from '@angular/material/tabs';
 
 
 
-import { NgModule } from '@angular/core';
+import { ErrorHandler, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -62,7 +62,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import {MatTableModule} from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
@@ -155,7 +155,7 @@ import { ConstraintsTableComponent } from './constraints-table/constraints-table
     ApiService,AuthService,
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptorService, multi: true },
     { provide: ErrorHandler, useClass: GlobalErrorHandlerService }],
-  ],
+
   bootstrap: [AppComponent],
   entryComponents: [SellDetailsComponent],
 

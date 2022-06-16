@@ -67,6 +67,22 @@
                 </div>
             </div>
         </mat-tab>
+        <mat-tab label="Payment Calculations">
+          <form [formGroup]="propertyForm">
+            <mat-form-field appearance="outline">
+              <mat-label>Deposit</mat-label>
+              <input formControlName="deposit" matInput type="number" placeholder="Deposit">
+            </mat-form-field>
+            <label><h3>Years: </h3></label><br>
+            <mat-radio-group formControlName="years" class="radio-group">
+              <mat-radio-button class="radio-button" *ngFor="let years of yearsList" [value]="years">{{years}}</mat-radio-button>
+            </mat-radio-group>
+          </form>
+        
+        <div mat-dialog-action [align]="'center'">
+        <button mat-raised-button color="primary" (click)="onCalc()">Calculate Payment</button>
+        </div>
+        </mat-tab>
         <mat-tab label="Sell Details">
             <table mat-table [dataSource]="dataSource" matSort>
 

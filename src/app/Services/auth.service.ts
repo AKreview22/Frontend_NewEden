@@ -50,4 +50,9 @@ export class AuthService {
     this.tokenResp = JSON.parse(atob(_token))
     return (this.tokenResp.role);
   }
+  GetIDByToken(token: any) {
+    let _token = token.split('.')[1];
+    this.tokenResp = JSON.parse(atob(_token))
+    return (this.tokenResp.id);
+  }
 }

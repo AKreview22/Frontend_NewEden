@@ -14,11 +14,11 @@ import { ManageEmployeeComponent } from './Pages/manage-employee/manage-employee
 import { ManagePropertiesComponent } from './Pages/manage-properties/manage-properties.component';
 import { PredictionResultsComponent } from './Pages/prediction-results/prediction-results.component';
 
-import { AuthGuard } from './shared/auth.guard';
-import { ItRoleGuard } from './shared/it-role.guard';
-import { RoleGuard } from './shared/role.guard';
-import { HrRoleGuard } from './shared/hr-role.guard';
-import { SalesRoleGuard } from './shared/sales-role.guard';
+import { AuthGuard } from './SharedPaged/auth.guard';
+import { ItRoleGuard } from './SharedPaged/it-role.guard';
+import { RoleGuard } from './SharedPaged/role.guard';
+import { HrRoleGuard } from './SharedPaged/hr-role.guard';
+import { SalesRoleGuard } from './SharedPaged/sales-role.guard';
 
 
 const routes: Routes = [
@@ -27,10 +27,10 @@ const routes: Routes = [
   {path:'manage-constraints',component:ManageConstraintsComponent,canActivate:[RoleGuard]},
   {path:'manage-employee',component:ManageEmployeeComponent,canActivate:[HrRoleGuard]},
   {path:'manage-properties',component:ManagePropertiesComponent,canActivate:[RoleGuard]},
-  {path: 'price-prediction' , component: PricePredictionComponent},
+  {path: 'price-prediction' , component: PricePredictionComponent,canActivate:[ItRoleGuard]},
   {path:'property-card/',component:PropertyCardComponent},
-  {path:'property-detail/:id',component: PropertyDetailComponent},
-  {path:'sell-details',component: SellDetailsComponent},
+  {path:'property-detail/:id',component: PropertyDetailComponent,canActivate:[SalesRoleGuard]},
+  {path:'sell-details',component: SellDetailsComponent,canActivate:[SalesRoleGuard]},
   {path:'employees',component:ManageEmployeeComponent,canActivate:[HrRoleGuard]},
   {path:'properties',component:ManagePropertiesComponent,canActivate:[RoleGuard]},
   {path:'constraints',component:ManageConstraintsComponent,canActivate:[RoleGuard]},

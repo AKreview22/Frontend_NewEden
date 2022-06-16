@@ -122,8 +122,8 @@ getSalesQuerSum() {
   }
 
 
-  postCalcPayment(data: any){
-     return this.http.post<any>("http://127.0.0.1:8000/Home/calc/",data);
+  postCalcPayment(data: any, id: number){
+     return this.http.put<any>("http://127.0.0.1:8000/Home/calc/",+id ,data);
   }
 
   getCalcPayment(){

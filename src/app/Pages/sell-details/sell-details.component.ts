@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup , FormBuilder , Validators } from '@angular/forms';
 import { ApiService } from 'src/app/Services/api.service';
 import { Property } from '../property';
-import { MatDialogRef } from '@angular/material/dialog'
+import { MatDialogRef } from '@angular/material/dialog';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-sell-details',
@@ -11,21 +12,24 @@ import { MatDialogRef } from '@angular/material/dialog'
 })
 export class SellDetailsComponent implements OnInit {
 
-  property: Property;
+  property= new Property();
   yearsList = ["3 Years", "5 Years" , "7 Years" , "10 Years"];
   propertyForm !: FormGroup;
-  constructor(private formBuilder : FormBuilder , private api : ApiService , private dialogRef :MatDialogRef<SellDetailsComponent>) { }
+  getId:any;
+  constructor(private formBuilder : FormBuilder , private api : ApiService , private dialogRef :MatDialogRef<SellDetailsComponent>) {}
 
   ngOnInit(): void {
     this.propertyForm = this.formBuilder.group({
-      deposit : ['',Validators.required],
-      years: ['',Validators.required]
+    deposit : ['',Validators.required],
+    years: ['',Validators.required]
     })
-  }
+    
 
+  }
+ 
   onCalc(){
     if(this.propertyForm.valid){
-      this.api.postCalcPayment(this.propertyForm.value).subscribe({
+      this.api.postCalcPayment(this.propertyForm.value,this.getId).subscribe({
         next:(res)=>{
           console.log(res);
         },
