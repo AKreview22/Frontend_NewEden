@@ -16,9 +16,9 @@ export class HrRoleGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     if (this.service.isLoggedIn()) {
       this.currentRole = this.service.GetRoleByToken(this.service.getToken());
-      if (this.currentRole == "HR"||this.currentRole == "Superuser") {
+      if (this.currentRole == "HR" ||this.currentRole == "Superuser" ) {
         return true;
-      // } else {
+      } else {
         alert('you are not authorized to access this menu');
         this.router.navigate(['']);
         return false;
