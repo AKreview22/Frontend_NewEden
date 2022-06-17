@@ -5,7 +5,7 @@
             <input  matInput (keyup)="applyFilter($event)" placeholder="Filter">
         </mat-form-field>
 
-        <div  style="width: 520px; margin-top: 50; margin-left: 200px; background-color: rgb(66, 82, 175);" class="mat-elevation-z3">
+        <div  style="width: 550px; margin-top: 50; margin-left: 200px; background-color: rgb(66, 82, 175);" class="mat-elevation-z3">
             <table mat-table [dataSource]="dataSource1" matSort>
 
                 <ng-container matColumnDef="sellerID_id_sales">
@@ -33,7 +33,7 @@
     </div>
 
     <div >
-        <div  style="flex: 1; width: 190px; background-color: steelblue; margin-left: 200px;  margin-top: 100px; " class="mat-elevation-z3">
+        <div  style="flex: 1; width: 210px; background-color: steelblue; margin-left: 200px;  margin-top: 100px; " class="mat-elevation-z3">
             <table   mat-table [dataSource]="dataSource2" >
 
                 <ng-container  matColumnDef="totalSum">
