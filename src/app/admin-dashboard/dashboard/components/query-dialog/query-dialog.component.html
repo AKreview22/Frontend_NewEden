@@ -3,7 +3,7 @@
    <form [formGroup]="queryForm">
 
      <mat-form-field appearance="outline">
-        <mat-label>Type of Apartment</mat-label>
+        <mat-label style="font-size:  20px; ">Type of Apartment</mat-label>
         <mat-select formControlName="Type" placeholder="">
           <mat-option value="All">All</mat-option>
             <mat-option value="Villa">Villa</mat-option>
@@ -12,32 +12,46 @@
             <mat-option value="Twin House">Twin House</mat-option>
         </mat-select>
 </mat-form-field>
-      <mat-form-field appearance="outline">
-              <mat-label>Minimum Price</mat-label>
+
+<div>
+<mat-label  style="font-size:  15px; ">Price Range</mat-label>
+<mat-checkbox  style="margin: 25px;"  (click)="togglePrice()" ></mat-checkbox>
+  <div *ngIf="priceShown">
+ <mat-form-field  appearance="outline">
+              <mat-label  style="font-size:  20px; ">Minimum Price</mat-label>
               <input formControlName="minPrice"  matInput >
             </mat-form-field>
             <mat-form-field appearance="outline">
-              <mat-label>Maximum Price</mat-label>
+              <mat-label  style="font-size:  20px; ">Maximum Price</mat-label>
               <input formControlName="maxPrice"  matInput>
             </mat-form-field>
 
+</div>
+</div>
 
+<div>
+<mat-label  style="font-size:  15px; "> Area Range</mat-label>
+<mat-checkbox  style="margin-left: 25px; margin-bottom: 25px;" (click)="toggleArea()" ></mat-checkbox>
+  <div *ngIf="areaShown">
       <mat-form-field appearance="outline">
-      <mat-label>Minimum Area</mat-label>
+      <mat-label  style="font-size:  20px; ">Minimum Area</mat-label>
       <input formControlName="minArea" matInput >
     </mat-form-field>
     <mat-form-field appearance="outline">
-      <mat-label>Maximum Area</mat-label>
+      <mat-label  style="font-size:  20px; ">Maximum Area</mat-label>
       <input formControlName="maxArea"  matInput >
     </mat-form-field>
+  </div>
+</div>
+
 
     <mat-form-field appearance="outline">
-        <mat-label>Level of apartment</mat-label>
+        <mat-label  style="font-size:  20px; ">Level of apartment</mat-label>
         <input formControlName="Level" matInput >
       </mat-form-field>
 
     <mat-form-field appearance="outline">
-        <mat-label>Finished</mat-label>
+        <mat-label  style="font-size:  20px; ">Finished</mat-label>
         <mat-select formControlName="Finished" >
            <mat-option value="All">All</mat-option>
             <mat-option value="1">Yes</mat-option>
@@ -46,7 +60,7 @@
       </mat-form-field>
 
  <mat-form-field appearance="outline">
-        <mat-label>Garden</mat-label>
+        <mat-label  style="font-size:  20px; ">Garden</mat-label>
         <mat-select formControlName="Garden" >
            <mat-option value="All">All</mat-option>
             <mat-option value="1">Yes</mat-option>
@@ -55,7 +69,7 @@
       </mat-form-field>
 
   <mat-form-field appearance="outline">
-        <mat-label>Sold</mat-label>
+        <mat-label  style="font-size:  20px; ">Sold</mat-label>
         <mat-select formControlName="Sold">
            <mat-option value="All">All</mat-option>
             <mat-option value="1">Yes</mat-option>
@@ -64,27 +78,31 @@
       </mat-form-field>
 
       <mat-form-field appearance="outline">
-        <mat-label>Seller ID</mat-label>
+        <mat-label  style="font-size:  20px; ">Seller ID</mat-label>
         <input formControlName="sellerID_id_filter"matInput>
       </mat-form-field>
 
-
+  <div>
+        <mat-label  style="font-size:  15px; "> Date Range</mat-label>
+        <mat-checkbox  style="margin-left: 25px; margin-bottom: 25px; margin-top: 10px;" (click)="toggleDate()" ></mat-checkbox>
+          <div *ngIf="dateShown">
     <mat-form-field appearance="outline">
-        <mat-label>Start date</mat-label>
+        <mat-label  style="font-size:  20px; ">Start date</mat-label>
         <input formControlName="startDate"  matInput>
       </mat-form-field>
       <mat-form-field appearance="outline">
-        <mat-label>End date</mat-label>
+        <mat-label  style="font-size:  20px; ">End date</mat-label>
         <input   formControlName="EndDate" matInput>
-
       </mat-form-field>
+    </div>
+  </div>
 
        <br> <mat-form-field appearance="outline">
-            <mat-label>Number of Bathrooms</mat-label>
+            <mat-label  style="font-size:  20px; ">Number of Bathrooms</mat-label>
             <input formControlName="Bathrooms"  matInput >
           </mat-form-field>
           <mat-form-field appearance="outline">
-            <mat-label>Number of Bedrooms</mat-label>
+            <mat-label  style="font-size:  20px; ">Number of Bedrooms</mat-label>
             <input formControlName="Bedrooms"  matInput >
           </mat-form-field>
    </form>

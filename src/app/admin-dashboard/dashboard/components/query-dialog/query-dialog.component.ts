@@ -53,4 +53,21 @@ export class QueryDialogComponent implements OnInit {
    }
   }
 
+
+priceShown: boolean = false ; // hidden by default
+togglePrice() {
+this.priceShown = ! this.priceShown;
+}
+
+areaShown: boolean = false ; // hidden by default
+toggleArea() {
+this.areaShown = ! this.areaShown;
+}
+
+dateShown: boolean = false ; // hidden by default
+toggleDate() {
+this.dateShown = ! this.dateShown;
+}
+
+
 }
