@@ -70,13 +70,11 @@
               <mat-label>Deposit</mat-label>
               <input formControlName="deposit" matInput type="number" placeholder="Deposit">
             </mat-form-field>
-            <mat-radio-group formControlName="years" class="radio-group">
-              <mat-label>Years</mat-label>
-              <mat-radio-button class="radio-button" *ngFor="let years of yearsList" [value]="years">{{years}}</mat-radio-button>
-            </mat-radio-group>
-
-
-          </form>
+            <mat-form-field appearance="outline">
+            <mat-label>Years</mat-label>
+              <input formControlName="years" matInput type="number" placeholder="years">
+            </mat-form-field>
+            </form>
 
         <div mat-dialog-action [align]="'center'">
         <button mat-raised-button color="primary" (click)="onCalc()">Calculate Payment</button>

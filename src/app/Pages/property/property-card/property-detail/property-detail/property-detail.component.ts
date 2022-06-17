@@ -26,8 +26,6 @@ export class PropertyDetailComponent implements OnInit {
   galleryImages: NgxGalleryImage[];
   sellerID:Array<any>[];
 
-
-  yearsList = [3, 5 , 7, 10];
   propertyForm !: FormGroup;
   res : Array<any>[];
 
@@ -114,7 +112,7 @@ export class PropertyDetailComponent implements OnInit {
         },
 
         error:()=>{
-          alert("Error Happened While Selling the Property")
+          alert("constraints violation( maximum years or minimum deposit)")
         }
 
       });
@@ -129,9 +127,7 @@ export class PropertyDetailComponent implements OnInit {
       next:(res:any)=>{
         this.dataSource=new MatTableDataSource(res);
       },
-      error:(err)=>{
-        alert("Error while calculating the data!!")
-      }
+
     })
   }
 
