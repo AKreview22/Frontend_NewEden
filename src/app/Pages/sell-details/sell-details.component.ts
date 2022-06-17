@@ -13,7 +13,7 @@ import { ActivatedRoute } from '@angular/router';
 export class SellDetailsComponent implements OnInit {
 
   property= new Property();
-  yearsList = ["3 Years", "5 Years" , "7 Years" , "10 Years"];
+  yearsList = [3, 5 , 7, 10];
   propertyForm !: FormGroup;
   getId:any;
   constructor(private formBuilder : FormBuilder , private api : ApiService , private dialogRef :MatDialogRef<SellDetailsComponent>) {}
@@ -21,15 +21,17 @@ export class SellDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.propertyForm = this.formBuilder.group({
     deposit : ['',Validators.required],
-    years: ['',Validators.required]
+    years: ['',Validators.required],
+    propid: [this.getId]
+
     })
-    
+
 
   }
- 
+
   onCalc(){
     if(this.propertyForm.valid){
-      this.api.postCalcPayment(this.propertyForm.value,this.getId).subscribe({
+      this.api.postCalcPayment(this.propertyForm.value).subscribe({
         next:(res)=>{
           console.log(res);
         },

@@ -1,4 +1,3 @@
-import { SellDetailsComponent } from './../../../../sell-details/sell-details.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, ElementRef, OnInit } from '@angular/core';
 import { Property } from 'src/app/Pages/property';
@@ -17,7 +16,8 @@ import { AuthService } from 'src/app/Services/auth.service';
 })
 export class PropertyDetailComponent implements OnInit {
 
-  displayedColumns: string[] = ['overallPrice','monthlyPayment', 'deliverDate'];
+  displayedColumns: string[] = ['cash_price','added_expenses','grand_total_with_interest',
+  'monthly_installment','receiving_date'];
   dataSource!: MatTableDataSource<any>;
 
   public propertyId:number;
@@ -27,7 +27,7 @@ export class PropertyDetailComponent implements OnInit {
   sellerID:Array<any>[];
 
 
-  yearsList = ["3 Years", "5 Years" , "7 Years" , "10 Years"];
+  yearsList = [3, 5 , 7, 10];
   propertyForm !: FormGroup;
   res : Array<any>[];
 
@@ -45,7 +45,6 @@ export class PropertyDetailComponent implements OnInit {
   ngOnInit() {
 
     this.propertyId = +this.route.snapshot.params['id'];
-    console.log(this.propertyId)
 
     this.route.params.subscribe(
       (params) => {
@@ -94,39 +93,32 @@ export class PropertyDetailComponent implements OnInit {
       }
     ];
 
-    this.propertyForm = this.formBuilder.group({
-      deposit : ['',Validators.required],
-      years: ['',Validators.required]
-      })
+
 
       this.sellerID=[this.auth.GetIDByToken(this.auth.getToken()),this.propertyId]
-      console.log(this.sellerID);
+       this.propertyForm = this.formBuilder.group({
+      deposit : ['',Validators.required],
+      years: ['',Validators.required],
+      propid:[this.propertyId]
+      })
 
   }
 
 
-  openDialog(){
-    this.dialog.open(SellDetailsComponent,{
-      width: '30%'
-    }).afterClosed().subscribe(val=>{
-      if(val === 'Calculate'){
-        this.getCalc();
-      }
-    })
-  }
 
 
   onCalc(){
     if(this.propertyForm.valid){
-      this.api.postCalcPayment(this.propertyForm.value, this.propertyId).subscribe({
+      this.api.postCalcPayment(this.propertyForm.value).subscribe({
         next:(res)=>{
-        console.log(this.propertyForm.value);
         },
+
         error:()=>{
           alert("Error Happened While Selling the Property")
         }
 
-      })
+      });
+      this.getCalc();
 
     }
   }
@@ -146,7 +138,8 @@ export class PropertyDetailComponent implements OnInit {
 
 
 
-  onSale(){
+  onSell(){
+    console.log(this.sellerID)
     this.api.postSellData(this.sellerID).subscribe({
       next:(res)=>{
         alert("Property Has Been Selled Sucessfully!")

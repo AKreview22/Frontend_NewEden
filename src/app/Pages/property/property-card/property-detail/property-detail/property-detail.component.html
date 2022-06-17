@@ -1,35 +1,32 @@
-<nav aria-label="breadcrumb">
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a routerLink=""  routerLinkActive="active-link"  [routerLinkActiveOptions]="{exact:true}"><i class="fas fa-home"></i> Home</a></li>
-  </ol>
-</nav>
 <div class="row shadow-lg">
   <div class="col-sm-6 p-3">
     <div class="card">
       <div class="card-img-wrapper">
         <ngx-gallery [options]="galleryOptions" [images]="galleryImages" class="ngx-gallery"></ngx-gallery>
       </div>
-      <div class="card-body">
+      <div style="height: 300px;"class="card-body">
         <h1 class="card-title">{{property.Name}}</h1>
        <hr>
+       <div style="display: flex;">
           <div>
             <i class="fas fa-home"></i> {{property.Type}}
           </div>
-          <div>
-            <strong>Price: </strong>{{property.PriceinEGP}}
+        <div style="flex:1; padding-left: 450px;" mat-dialog-action>
+          <button  mat-raised-button color="primary" (click)="onSell()">Sell</button>
+        </div>
+        </div>
+            <div>
+            <strong >Price: </strong>{{property.PriceinEGP}}
+          </div >
+
           </div>
-      </div>
-      <div class="card-footer">
-        <button mat-raised-button color="primary" (click)="openDialog()" style=" width: 10%;">
-          Calculate Payment
-        </button>
-      </div>
+
     </div>
   </div>
   <div class="col-sm-4 p-0">
     <div class="tab-panel p-3">
-      <mat-tab-group animationDuration="1000ms">
-        <mat-tab label="Overview">
+      <mat-tab-group  animationDuration="1000ms">
+        <mat-tab  label="Overview">
             <div class="row">
               <div class="col-sm-10">
                 <div class="heading">
@@ -43,11 +40,11 @@
                   <p>{{property.Name}}</p>
                 </div>
                 <div class="heading">
-                  <strong>Status</strong>
-                <p>{{property.Sold}}</p>
+                  <strong>Garden</strong>
+                <p>{{property.Garden}}</p>
                 </div>
                 <div class="heading">
-                  <strong>Level Number:</strong>
+                  <strong>Level:</strong>
                   <p>{{property.Level}}</p>
                 </div>
               </div>
@@ -73,12 +70,14 @@
               <mat-label>Deposit</mat-label>
               <input formControlName="deposit" matInput type="number" placeholder="Deposit">
             </mat-form-field>
-            <label><h3>Years: </h3></label><br>
             <mat-radio-group formControlName="years" class="radio-group">
+              <mat-label>Years</mat-label>
               <mat-radio-button class="radio-button" *ngFor="let years of yearsList" [value]="years">{{years}}</mat-radio-button>
             </mat-radio-group>
+
+
           </form>
-        
+
         <div mat-dialog-action [align]="'center'">
         <button mat-raised-button color="primary" (click)="onCalc()">Calculate Payment</button>
         </div>
@@ -86,34 +85,42 @@
         <mat-tab label="Sell Details">
             <table mat-table [dataSource]="dataSource" matSort>
 
-              <!-- overallPrice Column -->
-            <ng-container matColumnDef="overallPrice">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> Overall Price </th>
-              <td mat-cell *matCellDef="let row" style="padding-left :10" style="padding-right:10"> {{row.overallPrice}} </td>
+            <ng-container matColumnDef="cash_price">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> cash price </th>
+              <td  mat-cell *matCellDef="let row" style="padding-left :10" > {{row.cash_price}} </td>
             </ng-container>
 
-            <!-- monthlyPayment Column -->
-            <ng-container matColumnDef="monthlyPayment">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> Monthly Payment </th>
-              <td mat-cell *matCellDef="let row" style="padding-left :10" style="padding-right:10"> {{row.monthlyPayment}} </td>
+            <ng-container matColumnDef="added_expenses">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Added Expenses </th>
+              <td style="padding-left: 20px;" mat-cell *matCellDef="let row" > {{row.added_expenses}} </td>
             </ng-container>
 
-            <!-- deliverDate Column -->
-            <ng-container matColumnDef="deliverDate">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> Deliver Date </th>
-              <td mat-cell *matCellDef="let row"> {{row.deliverDate}} </td>
+            <ng-container matColumnDef="grand_total_with_interest">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Total </th>
+              <td  mat-cell *matCellDef="let row"> {{row.grand_total_with_interest}} </td>
+            </ng-container>
+
+
+            <ng-container matColumnDef="monthly_installment">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Monthly Installment </th>
+              <td style="padding-left: 20px;" mat-cell *matCellDef="let row"> {{row.monthly_installment}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="receiving_date">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Receiving Date </th>
+              <td style="padding-left: 10px;" mat-cell *matCellDef="let row"> {{row.receiving_date}} </td>
             </ng-container>
 
               <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
               <tr mat-row *matRowDef="let row; columns: displayedColumns;">
               </tr>
             </table>
-            <div mat-dialog-action [align]="'center'">
-              <button mat-raised-button color="primary" (click)="onSale()">Sale</button>
-            </div>
+
 
         </mat-tab>
       </mat-tab-group>
+
     </div>
+
   </div>
 </div>
